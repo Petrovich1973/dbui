@@ -1,0 +1,340 @@
+{
+  "clusters": [
+    {
+      "id": 1010,
+      "name": "clusterName_000",
+      "host": "localhost:9100",
+      "topics": {
+        "total": 23
+      },
+      "partitions": {
+        "total": 78,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 27,
+        "disk": "1000Gb/1200Gb",
+        "ram": "920Mb/2400Mb"
+      }
+    },
+    {
+      "id": 1,
+      "name": "clusterName_001",
+      "host": "localhost:4100",
+      "topics": {
+        "total": 42
+      },
+      "partitions": {
+        "total": 82,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 82,
+        "disk": "2400Gb/3000Gb",
+        "ram": "6200Mb/240000Mb"
+      }
+    },
+    {
+      "id": 2,
+      "name": "clusterName_002",
+      "host": "localhost:2100",
+      "topics": {
+        "total": 24
+      },
+      "partitions": {
+        "total": 81,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 67,
+        "disk": "1000Gb/2000Gb",
+        "ram": "6200Mb/8400Mb"
+      }
+    },
+    {
+      "id": 3,
+      "name": "clusterName_003",
+      "host": "localhost:3130",
+      "topics": {
+        "total": 34
+      },
+      "partitions": {
+        "total": 66,
+        "online": 47,
+        "inSync": 88,
+        "outOfSync": 21,
+        "underReplicated": 1
+      },
+      "controllerId": 72461,
+      "system": {
+        "cpu": 89,
+        "disk": "7800Gb/9200Gb",
+        "ram": "350Mb/800Mb"
+      }
+    },
+    {
+      "id": 4,
+      "name": "clusterName_004",
+      "host": "localhost:4430",
+      "topics": {
+        "total": 94
+      },
+      "partitions": {
+        "total": 16,
+        "online": 88,
+        "inSync": 22,
+        "outOfSync": 73,
+        "underReplicated": 3
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 91,
+        "disk": "1000Gb/120000Gb",
+        "ram": "6200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 5,
+      "name": "clusterName_005",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 29,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 6,
+      "name": "clusterName_006",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 30,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 7,
+      "name": "clusterName_007",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 50,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 8,
+      "name": "clusterName_008",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 60,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 9,
+      "name": "clusterName_009",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 60,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 10,
+      "name": "clusterName_010",
+      "host": "localhost:4550",
+      "topics": {
+        "total": 935
+      },
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 20,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 11,
+      "name": "clusterName_011",
+      "host": "localhost:9100",
+      "topics": {
+        "total": 23
+      },
+      "partitions": {
+        "total": 78,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 27,
+        "disk": "1000Gb/1200Gb",
+        "ram": "920Mb/2400Mb"
+      }
+    },
+    {
+      "id": 12,
+      "name": "clusterName_012",
+      "host": "localhost:4100",
+      "topics": {
+        "total": 42
+      },
+      "partitions": {
+        "total": 82,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 82,
+        "disk": "2400Gb/3000Gb",
+        "ram": "6200Mb/240000Mb"
+      }
+    },
+    {
+      "id": 13,
+      "name": "clusterName_013",
+      "host": "localhost:2100",
+      "topics": {
+        "total": 24
+      },
+      "partitions": {
+        "total": 81,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 67,
+        "disk": "1000Gb/2000Gb",
+        "ram": "6200Mb/8400Mb"
+      }
+    },
+    {
+      "id": 14,
+      "name": "clusterName_014",
+      "host": "localhost:3130",
+      "topics": {
+        "total": 34
+      },
+      "partitions": {
+        "total": 66,
+        "online": 47,
+        "inSync": 88,
+        "outOfSync": 21,
+        "underReplicated": 1
+      },
+      "controllerId": 72461,
+      "system": {
+        "cpu": 89,
+        "disk": "7800Gb/9200Gb",
+        "ram": "350Mb/800Mb"
+      }
+    },
+    {
+      "id": 15,
+      "name": "clusterName_015",
+      "host": "localhost:4430",
+      "topics": {
+        "total": 94
+      },
+      "partitions": {
+        "total": 16,
+        "online": 88,
+        "inSync": 22,
+        "outOfSync": 73,
+        "underReplicated": 3
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 91,
+        "disk": "1000Gb/120000Gb",
+        "ram": "6200Mb/24000Mb"
+      }
+    }
+  ]
+}

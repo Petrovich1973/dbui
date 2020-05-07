@@ -1,0 +1,5 @@
+export const VIEW_ALL = 'VIEW_ALL'
+export const WRITE_ALL = 'WRITE_ALL'
+export const KAFKA_USE = 'KAFKA_USE'
+export const GRIDGAIN_USE = 'GRIDGAIN_USE'
+export const POSTGRESQL_USE = 'POSTGRESQL_USE'

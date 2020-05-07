@@ -1,0 +1,11 @@
+@import (reference) "../../styles/variables.less";
+
+.titlePage {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 @size;
+  & > * + * {
+    margin-left: @size;
+  }
+}
