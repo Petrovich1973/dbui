@@ -9,7 +9,7 @@ const initialState = {
         }
     },
     settings: {
-        hostApi: 'http://localhost:5000/api',
+        hostApi: '/api',
         fontSize: 100
     }
 }

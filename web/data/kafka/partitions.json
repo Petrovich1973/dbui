@@ -1,0 +1,58 @@
+{
+  "partitions": [
+    {
+      "id": 1010,
+      "name": "Partition_001",
+      "role": "LEADER",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 1,
+      "name": "Partition_002",
+      "role": "FOLLOWER",
+      "status": "WARNING"
+    },
+    {
+      "id": 2,
+      "name": "Partition_003",
+      "role": "FOLLOWER",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 3,
+      "name": "Partition_004",
+      "role": "LEADER",
+      "status": "ERROR"
+    },
+    {
+      "id": 4,
+      "name": "Partition_005",
+      "role": "LEADER",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 5,
+      "name": "Partition_006",
+      "role": "FOLLOWER",
+      "status": "WARNING"
+    },
+    {
+      "id": 6,
+      "name": "Partition_007",
+      "role": "FOLLOWER",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 7,
+      "name": "Partition_008",
+      "role": "LEADER",
+      "status": "ERROR"
+    },
+    {
+      "id": 8,
+      "name": "Partition_009",
+      "role": "LEADER",
+      "status": "SUCCESS"
+    }
+  ]
+}

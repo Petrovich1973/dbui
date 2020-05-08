@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const fs = require('fs')
 
 const port = 5000
 
@@ -16,33 +15,6 @@ const topics = require('./data/kafka/topics')
 const brokers = require('./data/kafka/brokers')
 const partitions = require('./data/kafka/partitions')
 
-// fs.exists('myjsonfile.json', function(exists) {
-//     if(exists) {
-//         console.log('exists true')
-//         fs.readFile('./data/kafka/clusters.json', function readFileCallback(err, data) {
-//             if (err) {
-//                 console.log(err)
-//             } else {
-//                 let obj = JSON.parse(data)
-//                     .map(item => {
-//                         return ({
-//                             ...item,
-//                             system: {
-//                                 ...item.system,
-//                                 cpu: 87
-//                             }
-//                         })
-//                     })
-//                 console.log(obj)
-//
-//                 let json = JSON.stringify(obj);
-//                 fs.writeFile('./data/kafka/clusters.json', json);
-//             }
-//         })
-//     } else {
-//         console.log('exists false')
-//     }
-// })
 function randomInteger(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(rand);
@@ -53,7 +25,7 @@ const randomBool = () => Math.round(Math.random())
 const shiftNumber = value => {
     const direct = Math.round(Math.random())
 
-    if(value === 100 || value === 1) return value
+    if(value === 100 || value === 1) return 50
 
     let result = value
     if (direct) {
@@ -189,4 +161,4 @@ app.get('/api/clusters/:cluster/brokers/:broker/partitions/:id', (req, res) => {
     }
 })
 
-app.listen(port, () => console.log(`Listening on port ${port}! http://localhost:${port}`))
+app.listen(port, () => console.log(`Listening on port ${port}!`))
