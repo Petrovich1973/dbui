@@ -1,3 +1,3 @@
 # dbui
 
-web console
+web console admin
