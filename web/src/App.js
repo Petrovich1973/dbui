@@ -6,7 +6,7 @@ import './styles/App.less'
 import routesApp from './routes'
 import Header from "./components/Header"
 import isRight from "./utils/isRight"
-import SettingsPage from "./pages/SettingsPage";
+import SettingsPage from "./pages/SettingsPage"
 
 const App = (props) => {
     const {rightsCurrent = [], fontSize = 100} = props

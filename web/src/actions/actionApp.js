@@ -22,8 +22,11 @@ const handleCatch = (error, timeRequest) => {
 const getReducerApp = () => (dispatch, getState) => getState().reducerApp
 const getReducerKafka = () => (dispatch, getState) => getState().reducerKafka
 
-// Clusters
 
+
+// APACHE KAFKA
+
+// Clusters
 export const loadClusters = ({params = {}}) => {
     return dispatch => {
 
@@ -119,7 +122,6 @@ export const loadCluster = id => {
 }
 
 // Topics
-
 export const loadTopics = ({params = {}}) => {
     return dispatch => {
 
@@ -216,7 +218,6 @@ export const loadTopic = id => {
 }
 
 // Partitions
-
 export const loadPartitions = ({params = {}}) => {
     return dispatch => {
 
