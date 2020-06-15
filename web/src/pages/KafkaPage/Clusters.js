@@ -67,7 +67,7 @@ const Clusters = (props) => {
                         {firstReq ? <table className="table">
                             <colgroup>
                                 <col span="4"/>
-                                <col className="col-yellow" span="5"/>
+                                <col className="col-yellow" span="4"/>
                                 <col span="1"/>
                                 <col className="col-blue" span="3"/>
                             </colgroup>
@@ -77,16 +77,19 @@ const Clusters = (props) => {
                                 <th rowSpan={2}>name</th>
                                 <th rowSpan={2}>host</th>
                                 <th rowSpan={2}>topics</th>
-                                <th className="border-bottom opacity" colSpan={5}>partitions</th>
+
+                                <th className="border-bottom opacity" colSpan={4}>partitions</th>
+
                                 <th rowSpan={2}>controller id</th>
+
                                 <th className="border-bottom opacity" colSpan={3}>system</th>
                             </tr>
                             <tr>
                                 <th>total</th>
-                                <th>online</th>
                                 <th>in sync</th>
                                 <th>out of sync</th>
                                 <th>under replicated</th>
+
                                 <th>cpu</th>
                                 <th>disk</th>
                                 <th>ram</th>
@@ -98,12 +101,9 @@ const Clusters = (props) => {
                                     id = null,
                                     name = null,
                                     host = null,
-                                    topics: {
-                                        totalTopic = row.topics.total
-                                    },
+                                    topics = null,
                                     partitions: {
-                                        totalPart = row.partitions.total,
-                                        online = null,
+                                        total = null,
                                         inSync = null,
                                         outOfSync = null,
                                         underReplicated = null
@@ -123,13 +123,15 @@ const Clusters = (props) => {
                                         <td className="align-center">{id}</td>
                                         <td className="align-center"><small>{name}</small></td>
                                         <td className="align-center"><small>{host}</small></td>
-                                        <td className="align-center">{totalTopic}</td>
-                                        <td className="align-center">{totalPart}</td>
-                                        <td className="align-center">{online}</td>
+                                        <td className="align-center">{topics}</td>
+
+                                        <td className="align-center">{total}</td>
                                         <td className="align-center">{inSync}</td>
                                         <td className="align-center">{outOfSync}</td>
                                         <td className="align-center">{underReplicated}</td>
+
                                         <td className="align-center">{controllerId}</td>
+
                                         <td className={classnames("align-center", cpuColor(cpu))}>{cpu}</td>
                                         <td className="align-center"><small>{disk}</small></td>
                                         <td className="align-center"><small>{ram}</small></td>
@@ -154,27 +156,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(Clusters)
-
-// const scheme = {
-//     name: 'kafkaCluster1',
-//     zookeeper: 'grid1220:2181',
-//     saslMechanism: 'PLAIN',
-//     securityProtocol: 'PLAINTEXT',
-//     groupOffsetReaderThreadPoolSize: 8,
-//     rollingRestartConfig: {
-//         sshUser: 'kafka',
-//         sshPassword: 'kafka',
-//         pathToKafka: '/opt/u01/kafka',
-//         startBrokerScriptName: 'kafka-server-start',
-//         startBrokerPropertiesFilePath: '/opt/u01/kafka/etc/kafka/server.properties',
-//         stopBrokerScriptName: 'kafka-server-stop',
-//         kafkaServiceName: 'kafka.service',
-//         globalRestartTimeout: 3600000,
-//         stopBrokerCheckingTimeout: 10000,
-//         stopBrokerCheckingCount: 1000,
-//         brokerJmxPort: 7010,
-//         jmxUserLogin: 'myuser',
-//         jmxUserPassword: 'mypassword',
-//         sslJmx: false
-//     }
-// }

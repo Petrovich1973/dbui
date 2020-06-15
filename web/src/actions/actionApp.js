@@ -321,9 +321,7 @@ const initializeClusters = [
         id: 1010,
         name: 'clusterName_000',
         host: 'localhost:9100',
-        topics: {
-            total: 23
-        },
+        topics: 23,
         partitions: {
             total: 78,
             online: 17,
@@ -342,9 +340,7 @@ const initializeClusters = [
         id: 1,
         name: 'clusterName_001',
         host: 'localhost:4100',
-        topics: {
-            total: 42
-        },
+        topics: 42,
         partitions: {
             total: 82,
             online: 17,
@@ -363,9 +359,7 @@ const initializeClusters = [
         id: 2,
         name: 'clusterName_002',
         host: 'localhost:2100',
-        topics: {
-            total: 24
-        },
+        topics: 24,
         partitions: {
             total: 81,
             online: 17,
@@ -384,9 +378,7 @@ const initializeClusters = [
         id: 3,
         name: 'clusterName_003',
         host: 'localhost:3130',
-        topics: {
-            total: 34
-        },
+        topics: 34,
         partitions: {
             total: 66,
             online: 47,
@@ -405,9 +397,7 @@ const initializeClusters = [
         id: 4,
         name: 'clusterName_004',
         host: 'localhost:4430',
-        topics: {
-            total: 94
-        },
+        topics: 94,
         partitions: {
             total: 16,
             online: 88,
@@ -426,9 +416,7 @@ const initializeClusters = [
         id: 5,
         name: 'clusterName_005',
         host: 'localhost:4550',
-        topics: {
-            total: 935
-        },
+        topics: 935,
         partitions: {
             total: 106,
             online: 288,
@@ -449,8 +437,6 @@ const initializeTopics = [
     {
         id: 1010,
         name: 'topicrName_000',
-        messagesRead: 45,
-        messagesWrite: 45,
         underReplicated: 23,
         inSync: 89,
         outOfSync: 36,
@@ -460,8 +446,6 @@ const initializeTopics = [
     {
         id: 1,
         name: 'topicrName_001',
-        messagesRead: 75,
-        messagesWrite: 75,
         underReplicated: 13,
         inSync: 39,
         outOfSync: 32,
@@ -471,8 +455,6 @@ const initializeTopics = [
     {
         id: 2,
         name: 'topicrName_002',
-        messagesRead: 78,
-        messagesWrite: 56,
         underReplicated: 23,
         inSync: 74,
         outOfSync: 52,
@@ -482,8 +464,8 @@ const initializeTopics = [
 ]
 
 const initializePartitions = [
-    {id: 1010, name: 'Partition_001', role: 'LEADER', status: 'SUCCESS'},
-    {id: 1, name: 'Partition_002', role: 'FOLLOWER', status: 'WARNING'},
-    {id: 2, name: 'Partition_003', role: 'FOLLOWER', status: 'SUCCESS'},
-    {id: 3, name: 'Partition_004', role: 'LEADER', status: 'ERROR'}
+    {id: 1010, replicas: [1,2,3,4], isr: [2,3,1], osr: [4], leader: 1},
+    {id: 1, replicas: [5,6,7,8], isr: [6,7,5], osr: [8], leader: 5},
+    {id: 2, replicas: [9,10,11,12], isr: [10,11,9], osr: [12], leader: 9},
+    {id: 3, replicas: [13,14,15,16], isr: [14,15,13], osr: [16], leader: 13}
 ]

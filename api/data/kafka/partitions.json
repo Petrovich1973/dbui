@@ -2,57 +2,75 @@
   "partitions": [
     {
       "id": 1010,
-      "name": "Partition_001",
-      "role": "LEADER",
-      "status": "SUCCESS"
+      "replicas": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "isr": [
+        2,
+        3,
+        1
+      ],
+      "osr": [
+        4
+      ],
+      "leader": 1
     },
     {
       "id": 1,
-      "name": "Partition_002",
-      "role": "FOLLOWER",
-      "status": "WARNING"
+      "replicas": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "isr": [
+        6,
+        7,
+        5
+      ],
+      "osr": [
+        8
+      ],
+      "leader": 5
     },
     {
       "id": 2,
-      "name": "Partition_003",
-      "role": "FOLLOWER",
-      "status": "SUCCESS"
+      "replicas": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "isr": [
+        10,
+        11,
+        9
+      ],
+      "osr": [
+        12
+      ],
+      "leader": 9
     },
     {
       "id": 3,
-      "name": "Partition_004",
-      "role": "LEADER",
-      "status": "ERROR"
-    },
-    {
-      "id": 4,
-      "name": "Partition_005",
-      "role": "LEADER",
-      "status": "SUCCESS"
-    },
-    {
-      "id": 5,
-      "name": "Partition_006",
-      "role": "FOLLOWER",
-      "status": "WARNING"
-    },
-    {
-      "id": 6,
-      "name": "Partition_007",
-      "role": "FOLLOWER",
-      "status": "SUCCESS"
-    },
-    {
-      "id": 7,
-      "name": "Partition_008",
-      "role": "LEADER",
-      "status": "ERROR"
-    },
-    {
-      "id": 8,
-      "name": "Partition_009",
-      "role": "LEADER",
-      "status": "SUCCESS"
+      "replicas": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "isr": [
+        14,
+        15,
+        13
+      ],
+      "osr": [
+        16
+      ],
+      "leader": 13
     }
   ]
 }

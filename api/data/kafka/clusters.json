@@ -4,9 +4,7 @@
       "id": 1010,
       "name": "clusterName_000",
       "host": "localhost:9100",
-      "topics": {
-        "total": 23
-      },
+      "topics": 23,
       "partitions": {
         "total": 78,
         "online": 17,
@@ -25,9 +23,7 @@
       "id": 1,
       "name": "clusterName_001",
       "host": "localhost:4100",
-      "topics": {
-        "total": 42
-      },
+      "topics": 42,
       "partitions": {
         "total": 82,
         "online": 17,
@@ -46,9 +42,7 @@
       "id": 2,
       "name": "clusterName_002",
       "host": "localhost:2100",
-      "topics": {
-        "total": 24
-      },
+      "topics": 24,
       "partitions": {
         "total": 81,
         "online": 17,
@@ -67,9 +61,7 @@
       "id": 3,
       "name": "clusterName_003",
       "host": "localhost:3130",
-      "topics": {
-        "total": 34
-      },
+      "topics": 34,
       "partitions": {
         "total": 66,
         "online": 47,
@@ -88,9 +80,7 @@
       "id": 4,
       "name": "clusterName_004",
       "host": "localhost:4430",
-      "topics": {
-        "total": 94
-      },
+      "topics": 94,
       "partitions": {
         "total": 16,
         "online": 88,
@@ -109,9 +99,7 @@
       "id": 5,
       "name": "clusterName_005",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 935,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -130,9 +118,7 @@
       "id": 6,
       "name": "clusterName_006",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 876,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -151,9 +137,7 @@
       "id": 7,
       "name": "clusterName_007",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 921,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -172,9 +156,7 @@
       "id": 8,
       "name": "clusterName_008",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 936,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -193,9 +175,7 @@
       "id": 9,
       "name": "clusterName_009",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 376,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -214,9 +194,7 @@
       "id": 10,
       "name": "clusterName_010",
       "host": "localhost:4550",
-      "topics": {
-        "total": 935
-      },
+      "topics": 843,
       "partitions": {
         "total": 106,
         "online": 288,
@@ -235,9 +213,7 @@
       "id": 11,
       "name": "clusterName_011",
       "host": "localhost:9100",
-      "topics": {
-        "total": 23
-      },
+      "topics": 35,
       "partitions": {
         "total": 78,
         "online": 17,
@@ -256,9 +232,7 @@
       "id": 12,
       "name": "clusterName_012",
       "host": "localhost:4100",
-      "topics": {
-        "total": 42
-      },
+      "topics": 63,
       "partitions": {
         "total": 82,
         "online": 17,
@@ -277,9 +251,7 @@
       "id": 13,
       "name": "clusterName_013",
       "host": "localhost:2100",
-      "topics": {
-        "total": 24
-      },
+      "topics": 24,
       "partitions": {
         "total": 81,
         "online": 17,
@@ -298,9 +270,7 @@
       "id": 14,
       "name": "clusterName_014",
       "host": "localhost:3130",
-      "topics": {
-        "total": 34
-      },
+      "topics": 52,
       "partitions": {
         "total": 66,
         "online": 47,
@@ -319,9 +289,7 @@
       "id": 15,
       "name": "clusterName_015",
       "host": "localhost:4430",
-      "topics": {
-        "total": 94
-      },
+      "topics": 94,
       "partitions": {
         "total": 16,
         "online": 88,

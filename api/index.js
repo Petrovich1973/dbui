@@ -36,7 +36,7 @@ const shiftNumber = value => {
 
     return result
 }
-
+/////////////////////////////////////////////
 let clustersList = [...clusters.clusters]
 
 const operationClusters = () => {
@@ -51,19 +51,19 @@ const operationClusters = () => {
             })
         })
 }
-
+/////////////////////////////////////////////
 let topicsList = [...topics.topics]
 
 const operationTopics = () => {
 
-    topicsList = topicsList
-        .map(item => {
-            return ({
-                ...item,
-                messagesRead: randomBool() ? item.messagesRead + 1 : item.messagesRead,
-                messagesWrite: randomBool() ? item.messagesWrite + 1 : item.messagesWrite
-            })
-        })
+    // topicsList = topicsList
+    //     .map(item => {
+    //         return ({
+    //             ...item,
+    //             messagesRead: randomBool() ? item.messagesRead + 1 : item.messagesRead,
+    //             messagesWrite: randomBool() ? item.messagesWrite + 1 : item.messagesWrite
+    //         })
+    //     })
 }
 
 

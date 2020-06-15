@@ -1,4 +1,5 @@
 import * as type from '../constants/actionTypes'
+import * as api from "../constants/api"
 
 const initialState = {
     current: {
@@ -9,7 +10,8 @@ const initialState = {
         }
     },
     settings: {
-        hostApi: '/api',
+        // hostApi: '/api',
+        hostApi: api.url_host,
         fontSize: 100
     }
 }

@@ -56,35 +56,63 @@ const Partitions = (props) => {
                 <Route exact path={`${match.path}`}>
                     <div>
                         {firstReqPartitions && partitions.length ? <table className="table">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Имя</th>
-                                    <th>Роль</th>
-                                    <th>Статус</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {partitions.map((row, i) => {
-                                    const {
-                                        id = null,
-                                        name = null,
-                                        role = null,
-                                        status = null
-                                    } = row
-                                    return (
-                                        <tr key={i} onClick={() => {
-                                            props.history.push(`${match.url}/${id}`)
-                                        }}>
-                                            <td>{id}</td>
-                                            <td className="align-center"><small>{name}</small></td>
-                                            <td>{role}</td>
-                                            <td>{status}</td>
-                                        </tr>
-                                    )
-                                })}
-                                </tbody>
-                            </table> : firstReqPartitions && !partitions.length ? <div className="waiting">ничего не найдено</div> :
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Brokers ids</th>
+                                <th>Isr</th>
+                                <th>Osr</th>
+                                <th>Leader</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {partitions.map((row, i) => {
+                                const {
+                                    id = null,
+                                    replicas = [],
+                                    isr = [],
+                                    osr = [],
+                                    leader = null
+                                } = row
+                                return (
+                                    <tr key={i} onClick={() => {
+                                        props.history.push(`${match.url}/${id}`)
+                                    }}>
+                                        <td className="align-right">{id}</td>
+                                        <td>
+                                            {Array.isArray(replicas) && replicas
+                                                .map((el, idxEl) => {
+                                                    return (
+                                                        <small key={idxEl}>{el}</small>
+                                                    )
+                                                })
+                                                .reduce((prev, curr) => [prev, ', ', curr])}
+                                        </td>
+                                        <td>
+                                            {Array.isArray(isr) && isr
+                                                .map((el, idxEl) => {
+                                                    return (
+                                                        <small key={idxEl}>{el}</small>
+                                                    )
+                                                })
+                                                .reduce((prev, curr) => [prev, ', ', curr])}
+                                        </td>
+                                        <td>
+                                            {Array.isArray(osr) && osr
+                                                .map((el, idxEl) => {
+                                                    return (
+                                                        <small key={idxEl}>{el}</small>
+                                                    )
+                                                })
+                                                .reduce((prev, curr) => [prev, ', ', curr])}
+                                        </td>
+                                        <td>{leader}</td>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                        </table> : firstReqPartitions && !partitions.length ?
+                            <div className="waiting">ничего не найдено</div> :
                             <div className="waiting">waiting topics...</div>}
                     </div>
                 </Route>

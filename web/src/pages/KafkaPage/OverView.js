@@ -18,12 +18,9 @@ const OverView = (props) => {
     const {
         id = null,
         host = null,
-        topics = {
-            total: null
-        },
+        topics = null,
         partitions = {
             total: null,
-            online: null,
             inSync: null,
             outOfSync: null,
             underReplicated: null
@@ -93,12 +90,7 @@ const OverView = (props) => {
                     <td>
                         <small>{host}</small>
                     </td>
-                    <td/>
-                    <td className="align-right label">
-                        <small>topics</small>
-                    </td>
-                    <td>{topics.total}</td>
-                    <td colSpan={3}/>
+                    <td colSpan={6}/>
                 </tr>
                 <tr>
                     <td className="align-right label">
@@ -107,9 +99,9 @@ const OverView = (props) => {
                     <td>{partitions.total}</td>
                     <td/>
                     <td className="align-right label">
-                        <small>online</small>
+                        <small>topics</small>
                     </td>
-                    <td>{partitions.online}</td>
+                    <td>{topics}</td>
                     <td colSpan={3}/>
                 </tr>
                 <tr>

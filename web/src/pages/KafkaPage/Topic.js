@@ -41,8 +41,6 @@ const Topic = (props) => {
 
     const {
         name = null,
-        messagesRead = null,
-        messagesWrite = null,
         underReplicated = null,
         inSync = null,
         outOfSync = null,
@@ -83,32 +81,10 @@ const Topic = (props) => {
                     <tbody>
                     <tr>
                         <td className="align-right label">
-                            <small>messages Read</small>
-                        </td>
-                        <td>{messagesRead}</td>
-                        <td/>
-                        <td className="align-right label">
-                            <small>messages Write</small>
-                        </td>
-                        <td>{messagesWrite}</td>
-                        <td/>
-                        <td className="align-right label">
-                            <small>bytes Out PerSec</small>
-                        </td>
-                        <td>{bytesOutPerSec}</td>
-                    </tr>
-                    <tr>
-                        <td className="align-right label">
                             <small>under Replicated</small>
                         </td>
                         <td>{underReplicated}</td>
-                        <td/>
-                        <td className="align-right label">
-                            <small>in Sync</small>
-                        </td>
-                        <td>{inSync}</td>
-                        <td/>
-                        <td colSpan={2}/>
+                        <td colSpan={3}/>
                     </tr>
                     <tr>
                         <td className="align-right label">
@@ -117,11 +93,20 @@ const Topic = (props) => {
                         <td>{outOfSync}</td>
                         <td/>
                         <td className="align-right label">
+                            <small>in Sync</small>
+                        </td>
+                        <td>{inSync}</td>
+                    </tr>
+                    <tr>
+                        <td className="align-right label">
+                            <small>bytes Out PerSec</small>
+                        </td>
+                        <td>{bytesOutPerSec}</td>
+                        <td/>
+                        <td className="align-right label">
                             <small>bytes In PerSec</small>
                         </td>
                         <td>{bytesInPerSec}</td>
-                        <td/>
-                        <td colSpan={2}/>
                     </tr>
                     </tbody>
                 </table>

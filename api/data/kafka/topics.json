@@ -3,8 +3,6 @@
     {
       "id": 1010,
       "name": "topicrName_000",
-      "messagesRead": 45,
-      "messagesWrite": 45,
       "underReplicated": 23,
       "inSync": 89,
       "outOfSync": 36,
@@ -14,8 +12,6 @@
     {
       "id": 1,
       "name": "topicrName_001",
-      "messagesRead": 75,
-      "messagesWrite": 75,
       "underReplicated": 13,
       "inSync": 39,
       "outOfSync": 32,
@@ -25,8 +21,6 @@
     {
       "id": 2,
       "name": "topicrName_002",
-      "messagesRead": 78,
-      "messagesWrite": 56,
       "underReplicated": 23,
       "inSync": 74,
       "outOfSync": 52,
@@ -36,8 +30,6 @@
     {
       "id": 3,
       "name": "topicrName_003",
-      "messagesRead": 85,
-      "messagesWrite": 25,
       "underReplicated": 44,
       "inSync": 65,
       "outOfSync": 23,
@@ -47,8 +39,6 @@
     {
       "id": 4,
       "name": "topicrName_004",
-      "messagesRead": 22,
-      "messagesWrite": 23,
       "underReplicated": 76,
       "inSync": 22,
       "outOfSync": 67,
@@ -58,8 +48,6 @@
     {
       "id": 5,
       "name": "topicrName_005",
-      "messagesRead": 84,
-      "messagesWrite": 84,
       "underReplicated": 34,
       "inSync": 63,
       "outOfSync": 22,
@@ -69,8 +57,6 @@
     {
       "id": 6,
       "name": "topicrName_006",
-      "messagesRead": 23,
-      "messagesWrite": 23,
       "underReplicated": 65,
       "inSync": 21,
       "outOfSync": 54,
@@ -80,8 +66,6 @@
     {
       "id": 7,
       "name": "topicrName_007",
-      "messagesRead": 85,
-      "messagesWrite": 27,
       "underReplicated": 23,
       "inSync": 62,
       "outOfSync": 77,
@@ -91,8 +75,6 @@
     {
       "id": 8,
       "name": "topicrName_008",
-      "messagesRead": 18,
-      "messagesWrite": 53,
       "underReplicated": 82,
       "inSync": 74,
       "outOfSync": 25,

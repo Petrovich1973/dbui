@@ -60,8 +60,6 @@ const Topics = (props) => {
                             <tr>
                                 <th>id</th>
                                 <th>name</th>
-                                <th>messages Read</th>
-                                <th>messages Write</th>
                                 <th>under Replicated</th>
                                 <th>in Sync</th>
                                 <th>out Of Sync</th>
@@ -74,8 +72,6 @@ const Topics = (props) => {
                                 const {
                                     id = null,
                                     name = null,
-                                    messagesRead = null,
-                                    messagesWrite = null,
                                     underReplicated = null,
                                     inSync = null,
                                     outOfSync = null,
@@ -90,8 +86,6 @@ const Topics = (props) => {
                                         <td className="align-center">
                                             <small>{name}</small>
                                         </td>
-                                        <td className="align-center">{messagesRead}</td>
-                                        <td className="align-center">{messagesWrite}</td>
                                         <td className="align-center">{underReplicated}</td>
                                         <td className="align-center">{inSync}</td>
                                         <td className="align-center">{outOfSync}</td>
