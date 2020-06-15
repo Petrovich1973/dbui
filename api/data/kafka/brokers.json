@@ -1,52 +1,124 @@
 {
   "brokers": [
     {
-      "id": 1010,
-      "name": "Broker_001",
-      "version": "2.0.4",
-      "address": "localhost:3445",
-      "controller": 452,
-      "velocity": "345/23"
+      "id": 1011,
+      "partitions": {
+        "total": 10,
+        "inSync": 5,
+        "outOfSync": 5,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 100,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 99
+        },
+        "faileRequests": 1
+      },
+      "consumption": {
+        "bytesInPerSec": 100,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 99
+        },
+        "faileRequests": 1
+      },
+      "system": {
+        "cpu": 80,
+        "disk": "100 GB",
+        "ram": "40 GB"
+      }
     },
     {
       "id": 1,
-      "name": "Broker_002",
-      "version": "2.0.4",
-      "address": "localhost:3446",
-      "controller": 453,
-      "velocity": "145/53"
+      "partitions": {
+        "total": 50,
+        "inSync": 25,
+        "outOfSync": 25,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 300,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 99
+        },
+        "faileRequests": 1
+      },
+      "consumption": {
+        "bytesInPerSec": 100,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 99
+        },
+        "faileRequests": 1
+      },
+      "system": {
+        "cpu": 90,
+        "disk": "100 GB",
+        "ram": "40 GB"
+      }
     },
     {
       "id": 2,
-      "name": "Broker_003",
-      "version": "2.0.4",
-      "address": "localhost:3447",
-      "controller": 454,
-      "velocity": "342/8"
+      "partitions": {
+        "total": 30,
+        "inSync": 35,
+        "outOfSync": 35,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 400,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 99
+        },
+        "faileRequests": 1
+      },
+      "consumption": {
+        "bytesInPerSec": 100,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 79
+        },
+        "faileRequests": 1
+      },
+      "system": {
+        "cpu": 90,
+        "disk": "200 GB",
+        "ram": "40 GB"
+      }
     },
     {
       "id": 3,
-      "name": "Broker_004",
-      "version": "2.0.4",
-      "address": "localhost:3448",
-      "controller": 455,
-      "velocity": "45/203"
-    },
-    {
-      "id": 4,
-      "name": "Broker_005",
-      "version": "2.0.4",
-      "address": "localhost:3449",
-      "controller": 456,
-      "velocity": "815/723"
-    },
-    {
-      "id": 5,
-      "name": "Broker_006",
-      "version": "2.0.4",
-      "address": "localhost:3450",
-      "controller": 457,
-      "velocity": "86/35"
+      "partitions": {
+        "total": 20,
+        "inSync": 85,
+        "outOfSync": 85,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 300,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 300
+        },
+        "faileRequests": 1
+      },
+      "consumption": {
+        "bytesInPerSec": 100,
+        "requestLatency": {
+          "95th percentile": 100,
+          "99.9th percentile": 200
+        },
+        "faileRequests": 1
+      },
+      "system": {
+        "cpu": 90,
+        "disk": "100 GB",
+        "ram": "40 GB"
+      }
     }
   ]
 }

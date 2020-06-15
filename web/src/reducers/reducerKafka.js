@@ -33,6 +33,14 @@ const initialState = {
     partition: {},
     waitingPartition: null,
     firstReqPartition: false,
+
+    brokers: {},
+    waitingBrokers: null,
+    firstReqBrokers: false,
+
+    broker: {},
+    waitingBroker: null,
+    firstReqBroker: false,
 }
 
 const reducer = (state = initialState, action) => {

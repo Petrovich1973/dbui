@@ -218,7 +218,7 @@ export const loadTopic = id => {
 }
 
 // Partitions
-export const loadPartitions = ({params = {}}) => {
+export const loadPartitions = ({params = {}, url = ''}) => {
     return dispatch => {
 
         const timeRequest = Date.now()
@@ -230,7 +230,7 @@ export const loadPartitions = ({params = {}}) => {
             }
         })
 
-        axios.get(`${dispatch(getReducerApp()).settings.hostApi}${api.kafka_clusters}/${dispatch(getReducerKafka()).cluster.id}/topics/${dispatch(getReducerKafka()).topic.id}/partitions`, {
+        axios.get(url, {
             params
         })
             .then((response) => {
@@ -261,7 +261,7 @@ export const loadPartitions = ({params = {}}) => {
     }
 }
 
-export const loadPartition = id => {
+export const loadPartition = ({id = 0, url = ''}) => {
     return dispatch => {
 
         const timeRequest = Date.now()
@@ -273,7 +273,7 @@ export const loadPartition = id => {
             }
         })
 
-        axios.get(`${dispatch(getReducerApp()).settings.hostApi}${api.kafka_clusters}/${dispatch(getReducerKafka()).cluster.id}/topics/${dispatch(getReducerKafka()).topic.id}/partitions/${id}`)
+        axios.get(url)
             .then((response) => {
                 const isActualResponse = dispatch(getReducerKafka()).waitingPartition === timeRequest
                 if (isActualResponse) {
@@ -305,6 +305,102 @@ export const loadPartition = id => {
                             partition: {...dispatch(getReducerKafka()).partitions.find(item => item.id === +id)},
                             waitingPartition: null,
                             firstReqPartition: true,
+                        }
+                    })
+                }
+                handleCatch(error, timeRequest)
+            })
+    }
+}
+
+// Brokers
+export const loadBrokers = ({params = {}}) => {
+    return dispatch => {
+
+        const timeRequest = Date.now()
+
+        dispatch({
+            type: types.KAFKA_UPDATE,
+            payload: {
+                waitingBrokers: timeRequest
+            }
+        })
+
+        axios.get(`${dispatch(getReducerApp()).settings.hostApi}${api.kafka_clusters}/${dispatch(getReducerKafka()).cluster.id}/brokers`, {
+            params
+        })
+            .then((response) => {
+                const isActualResponse = dispatch(getReducerKafka()).waitingBrokers === timeRequest
+                if (isActualResponse) {
+                    dispatch({
+                        type: types.KAFKA_UPDATE,
+                        payload: {
+                            brokers: response.data,
+                            waitingBrokers: null,
+                            firstReqBrokers: true
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                const is404 = error.request.status === 404
+                dispatch({
+                    type: types.KAFKA_UPDATE,
+                    payload: {
+                        brokers: is404 ? [] : initializeBrokers, // заглушка
+                        waitingBrokers: null,
+                        firstReqBrokers: true
+                    }
+                })
+                handleCatch(error, timeRequest)
+            })
+    }
+}
+
+export const loadBroker = id => {
+    return dispatch => {
+
+        const timeRequest = Date.now()
+
+        dispatch({
+            type: types.KAFKA_UPDATE,
+            payload: {
+                waitingBroker: timeRequest
+            }
+        })
+
+        axios.get(`${dispatch(getReducerApp()).settings.hostApi}${api.kafka_clusters}/${dispatch(getReducerKafka()).cluster.id}/brokers/${id}`)
+            .then((response) => {
+                const isActualResponse = dispatch(getReducerKafka()).waitingBroker === timeRequest
+                if (isActualResponse) {
+                    dispatch({
+                        type: types.KAFKA_UPDATE,
+                        payload: {
+                            broker: response.data,
+                            waitingBroker: null,
+                            firstReqBroker: true
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                const is404 = error.request.status === 404
+                if (is404) {
+                    dispatch({
+                        type: types.KAFKA_UPDATE,
+                        payload: {
+                            broker: {name: `id ${id} not found`},
+                            waitingBroker: null,
+                            firstReqBroker: true,
+                        }
+                    })
+                } else {
+                    dispatch({
+                        type: types.KAFKA_UPDATE,
+                        payload: {
+                            broker: {...dispatch(getReducerKafka()).brokers.find(item => item.id === +id)},
+                            waitingBroker: null,
+                            firstReqBroker: true,
                         }
                     })
                 }
@@ -468,4 +564,67 @@ const initializePartitions = [
     {id: 1, replicas: [5,6,7,8], isr: [6,7,5], osr: [8], leader: 5},
     {id: 2, replicas: [9,10,11,12], isr: [10,11,9], osr: [12], leader: 9},
     {id: 3, replicas: [13,14,15,16], isr: [14,15,13], osr: [16], leader: 13}
+]
+
+const initializeBrokers = [
+    {
+        id: 1010,
+        partitions: {
+            total: 10,
+            inSync: 5,
+            outOfSync: 5,
+            underReplicated: 0
+        },
+        production: {
+            bytesInPerSec: 100,
+            requestLatency: {
+                "95th percentile": 100,
+                "99.9th percentile": 99
+            },
+            faileRequests: 1
+        },
+        consumption: {
+            bytesInPerSec: 100,
+            requestLatency: {
+                "95th percentile": 100,
+                "99.9th percentile": 99
+            },
+            faileRequests: 1
+        },
+        system: {
+            cpu: 80,
+            disk: "100 GB",
+            ram: "40 GB"
+        }
+    },
+    {
+        id: 1,
+        partitions: {
+            total: 50,
+            inSync: 25,
+            outOfSync: 25,
+            underReplicated: 0
+        },
+        production: {
+            bytesInPerSec: 300,
+            requestLatency: {
+                "95th percentile": 100,
+                "99.9th percentile": 99
+            },
+            faileRequests: 1
+        },
+        consumption: {
+            bytesInPerSec: 100,
+            requestLatency: {
+                "95th percentile": 100,
+                "99.9th percentile": 99
+            },
+            faileRequests: 1
+        },
+        system: {
+            cpu: 90,
+            disk: "100 GB",
+            ram: "40 GB"
+        }
+    }
 ]

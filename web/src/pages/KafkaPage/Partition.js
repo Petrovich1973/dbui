@@ -5,13 +5,16 @@ import {useParams, useRouteMatch} from 'react-router-dom'
 import {loadPartition} from "../../actions/actionApp";
 
 const Partition = (props) => {
-    const {store = {}, dispatch} = props
+    const {store = {}, hostApi = '', dispatch} = props
     const {partition = {}, waitingPartition = null, firstReqPartition = false} = store
     const match = useRouteMatch()
     const {id} = useParams()
 
+    // TODO Переписать роутинг - избавиться от необходимости replace
+    const url = `${hostApi}${match.url.replace(/\/console\/kafka/, '')}`;
+
     useEffect(() => {
-        dispatch(loadPartition(id))
+        dispatch(loadPartition({id, url}))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -19,7 +22,7 @@ const Partition = (props) => {
         let timeId = null
         clearTimeout(timeId)
         if (firstReqPartition && !waitingPartition) {
-            timeId = setTimeout(() => dispatch(loadPartition(id)), 1000)
+            timeId = setTimeout(() => dispatch(loadPartition({id, url})), 1000)
         }
 
         return () => {
@@ -43,12 +46,12 @@ const Partition = (props) => {
     useEffect(() => {
         props.dispatch({
             type: type.KAFKA_BREADCRUMBS_UPDATE,
-            payload: {clusterChildSecondName: {label: name, path: match.url}}
+            payload: {clusterChildSecondName: {label: id, path: match.url}}
         })
         return () => {
             props.dispatch({
                 type: type.KAFKA_BREADCRUMBS_UPDATE,
-                payload: {clusterChildSecondName: {label: name, path: null}}
+                payload: {clusterChildSecondName: {label: id, path: null}}
             })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,7 +62,7 @@ const Partition = (props) => {
             <div>
                 <small><em>Partition</em></small>
                 &nbsp;
-                <span style={{fontSize: '120%'}}>{name}</span>
+                <span style={{fontSize: '120%'}}>{id}</span>
             </div>
             &nbsp;
             <div>
@@ -83,7 +86,8 @@ const Partition = (props) => {
 Partition.displayName = 'Partition'
 
 const mapStateToProps = state => ({
-    store: state.reducerKafka
+    store: state.reducerKafka,
+    hostApi: state.reducerApp.settings.hostApi
 })
 
 export default connect(mapStateToProps)(Partition)

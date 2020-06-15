@@ -3,36 +3,64 @@ import {connect} from 'react-redux'
 import * as type from '../../constants/actionTypes'
 import {Redirect, Route, Switch, NavLink, Link, useParams, useRouteMatch} from 'react-router-dom'
 import Partitions from "./Partitions"
+import {loadBroker} from "../../actions/actionApp";
 
 const Broker = (props) => {
-    const {brokers = []} = props
+    const {store = {}, dispatch} = props
+    const {broker = {}, waitingBroker = null, firstReqBroker = false} = store
     const match = useRouteMatch()
     const {id} = useParams()
+
     const [brokerRouters] = useState([
         {title: 'Partitions', path: `/partitions`, component: Partitions}
     ])
 
-    const {
-        name = null,
-        version = '',
-        address = '',
-        controller = null,
-        velocity = ''
-    } = brokers.find(item => item.id === +id) || {}
+    useEffect(() => {
+        dispatch(loadBroker(id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        let timeId = null
+        clearTimeout(timeId)
+        if (firstReqBroker && !waitingBroker) {
+            timeId = setTimeout(() => dispatch(loadBroker(id)), 1000)
+        }
+
+        return () => {
+            clearTimeout(timeId)
+            dispatch({
+                type: type.KAFKA_UPDATE,
+                payload: {
+                    waitingBroker: null
+                }
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [broker])
+
+    // const {
+    //     name = null,
+    //     underReplicated = null,
+    //     inSync = null,
+    //     outOfSync = null,
+    //     bytesInPerSec = null,
+    //     bytesOutPerSec = null
+    // } = broker
 
     useEffect(() => {
         props.dispatch({
             type: type.KAFKA_BREADCRUMBS_UPDATE,
-            payload: {clusterChildName: {label: name, path: match.url}}
+            payload: {clusterChildName: {label: id, path: match.url}}
         })
         return () => {
             props.dispatch({
                 type: type.KAFKA_BREADCRUMBS_UPDATE,
-                payload: {clusterChildName: {label: name, path: null}}
+                payload: {clusterChildName: {label: id, path: null}}
             })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match.url])
+    }, [match.url, broker])
 
     return (
         <div className="scrollhide" style={{fontSize: '100%', height: '100%', overflow: 'auto'}}>
@@ -42,7 +70,7 @@ const Broker = (props) => {
                         <NavLink to={`${match.url}`}>
                             <small><em>Broker</em></small>
                             &nbsp;
-                            <span style={{fontSize: '140%'}}>{name}</span>
+                            <span style={{fontSize: '140%'}}>{id}</span>
                         </NavLink>
                     </li>
                 </ul>
@@ -53,25 +81,25 @@ const Broker = (props) => {
                     <tbody>
                     <tr>
                         <td className="align-right label">
-                            <small>version</small>
+                            <small>id</small>
                         </td>
-                        <td>{version}</td>
+                        <td>{id}</td>
                         <td/>
                         <td className="align-right label">
-                            <small>address</small>
+                            <small>id</small>
                         </td>
-                        <td>{address}</td>
+                        <td>{id}</td>
                     </tr>
                     <tr>
                         <td className="align-right label">
-                            <small>controller</small>
+                            <small>id</small>
                         </td>
-                        <td>{controller}</td>
+                        <td>{id}</td>
                         <td/>
                         <td className="align-right label">
-                            <small>velocity</small>
+                            <small>id</small>
                         </td>
-                        <td>{velocity}</td>
+                        <td>{id}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -106,4 +134,8 @@ const Broker = (props) => {
 
 Broker.displayName = 'Broker'
 
-export default connect()(Broker)
+const mapStateToProps = state => ({
+    store: state.reducerKafka
+})
+
+export default connect(mapStateToProps)(Broker)

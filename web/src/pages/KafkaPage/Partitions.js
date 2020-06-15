@@ -6,22 +6,23 @@ import Partition from "./Partition"
 import {loadPartitions} from "../../actions/actionApp";
 
 const Partitions = (props) => {
-    const {store = {}, dispatch} = props
+    const {store = {}, hostApi = '', dispatch} = props
     const {partitions = [], waitingPartitions = null, firstReqPartitions = false} = store
     const match = useRouteMatch()
     const location = useLocation()
 
     const isEqualPath = (match.url === location.pathname)
+    const url = `${hostApi}${match.url.replace(/\/console\/kafka/, '')}`
 
     useEffect(() => {
-        dispatch(loadPartitions({}))
+        dispatch(loadPartitions({params: {}, url}))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         let timeId = null
         if (firstReqPartitions && !waitingPartitions && isEqualPath) {
-            timeId = setTimeout(() => dispatch(loadPartitions({})), 1000)
+            timeId = setTimeout(() => dispatch(loadPartitions({params: {}, url})), 1000)
         }
 
         return () => {
@@ -127,7 +128,8 @@ const Partitions = (props) => {
 Partitions.displayName = 'Partitions'
 
 const mapStateToProps = state => ({
-    store: state.reducerKafka
+    store: state.reducerKafka,
+    hostApi: state.reducerApp.settings.hostApi
 })
 
 export default connect(mapStateToProps)(Partitions)

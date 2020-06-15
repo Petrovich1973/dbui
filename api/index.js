@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
-const port = 5000
+const port = 9000
 
 const app = express()
 
@@ -65,7 +65,18 @@ const operationTopics = () => {
     //         })
     //     })
 }
+//////////////////////////////////////////////
+let partitionsList = [...partitions.partitions]
 
+const operationPartitions = () => {
+    // generate
+}
+//////////////////////////////////////////////
+let brokersList = [...brokers.brokers]
+
+const operationBrokers = () => {
+    // generate
+}
 
 app.get('/api/current', (req, res) => {
     res.send({
@@ -139,21 +150,24 @@ app.get('/api/clusters/:cluster/brokers', (req, res) => {
     setTimeout(() => res.send(brokers.brokers), 100)
 })
 
-app.get('/api/clusters/:cluster/brokers/:id', (req, res) => {
-    const result = brokers.brokers[req.params.id]
+app.get('/api/clusters/:cluster/brokers/:id', async (req, res) => {
+    await operationBrokers()
+    const result = brokersList.find(item => item.id === +req.params.id)
     if (!result) {
         res.sendStatus(404)
     } else {
         res.send(result)
     }
+
 })
 
 app.get('/api/clusters/:cluster/brokers/:broker/partitions', (req, res) => {
-    setTimeout(() => res.send(partitions.partitions), 300)
+    setTimeout(() => res.send(partitionsList), 300)
 })
 
-app.get('/api/clusters/:cluster/brokers/:broker/partitions/:id', (req, res) => {
-    const result = partitions.partitions[req.params.id]
+app.get('/api/clusters/:cluster/brokers/:broker/partitions/:id', async (req, res) => {
+    await operationPartitions()
+    const result = partitionsList.find(item => item.id === +req.params.id)
     if (!result) {
         res.sendStatus(404)
     } else {

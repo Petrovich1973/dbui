@@ -1,17 +1,40 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import * as type from "../../constants/actionTypes"
-import {Route, Switch, useRouteMatch} from 'react-router-dom'
+import {Route, Switch, useRouteMatch, useLocation} from 'react-router-dom'
 import Broker from "./Broker"
-import axios from "axios"
-import * as api from "../../constants/api";
+import {loadBrokers} from '../../actions/actionApp'
 
 const Brokers = (props) => {
-    const {cluster = {}} = props
-    const [waiting, setWaiting] = useState(true)
-    const [brokers, setBrokers] = useState([])
-    const [brokerActive, setBrokerActive] = useState(null)
+    const {store = {}, dispatch} = props
+    const {brokers = [], waitingBrokers = null, firstReqBrokers = false} = store
     const match = useRouteMatch()
+    const location = useLocation()
+
+    const isEqualPath = (match.url === location.pathname)
+
+    useEffect(() => {
+        dispatch(loadBrokers({}))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        let timeId = null
+        if (firstReqBrokers && !waitingBrokers && isEqualPath) {
+            timeId = setTimeout(() => dispatch(loadBrokers({})), 1000)
+        }
+
+        return () => {
+            clearTimeout(timeId)
+            dispatch({
+                type: type.KAFKA_UPDATE,
+                payload: {
+                    waitingBrokers: null
+                }
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [brokers, location])
 
     useEffect(() => {
         props.dispatch({
@@ -27,71 +50,107 @@ const Brokers = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.url, brokers])
 
-    useEffect(() => {
-        setWaiting(true)
-        axios.get(`${api.kafka_clusters}/${cluster.id}/brokers`)
-            .then(res => {
-                setBrokers(res.data)
-                setBrokerActive(1)
-                setWaiting(false)
-            })
-            .catch(err => {
-                console.log(err)
-                setBrokers(initializeBrockeers)
-                setBrokerActive(1)
-                setWaiting(false)
-            })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     return (
         <>
             <Switch>
                 <Route exact path={`${match.path}`}>
-                    <div className="scrollhide" style={{fontSize: '100%', height: '100%', overflow: 'auto'}}>
-                        {!waiting ? <table className="table">
-                                <thead>
-                                <tr>
-                                    <th>broker ID</th>
-                                    <th>Имя</th>
-                                    <th>Версия</th>
-                                    <th>адрес broker</th>
-                                    <th>controller ID</th>
-                                    <th>Скорость in/out</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {brokers.map((row, i) => {
-                                    const {
-                                        id = null,
-                                        name = null,
-                                        version = '',
-                                        address = '',
-                                        controller = null,
-                                        velocity = ''
-                                    } = row
-                                    return (
-                                        <tr key={i} onClick={() => {
-                                            setBrokerActive(id)
-                                            props.history.push(`${match.url}/${id}`)
-                                        }}>
-                                            <td className="align-center">{id}</td>
-                                            <td className="align-center"><small>{name}</small></td>
-                                            <td className="align-center">{version}</td>
-                                            <td className="align-center"><small>{address}</small></td>
-                                            <td className="align-center">{controller}</td>
-                                            <td className="align-center">{velocity}</td>
-                                        </tr>
-                                    )
-                                })}
-                                </tbody>
-                            </table>
-                            : <div className="waiting">waiting...</div>}
+                    <div className="scrollhide">
+                        {firstReqBrokers && brokers.length ? <table className="table">
+                            <colgroup>
+                                <col span="1"/>
+                                <col className="col-yellow" span="4"/>
+                                <col className="col-green" span="4"/>
+                                <col className="col-red" span="4"/>
+                                <col className="col-blue" span="3"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th rowSpan={3}>id</th>
+
+                                <th className="border-bottom opacity" colSpan={4}>partitions</th>
+
+                                <th className="border-bottom opacity" colSpan={4}>production</th>
+
+                                <th className="border-bottom opacity" colSpan={4}>consumption</th>
+
+                                <th className="border-bottom opacity" colSpan={3}>system</th>
+                            </tr>
+                            <tr>
+                                <th rowSpan={2}>total</th>
+                                <th rowSpan={2}>in sync</th>
+                                <th rowSpan={2}>out of sync</th>
+                                <th rowSpan={2}>under replicated</th>
+
+                                <th rowSpan={2}>bytes in per sec</th>
+                                <th colSpan={2} className="border-left border-right opacity">request latency</th>
+                                <th rowSpan={2}>failed request</th>
+                                <th rowSpan={2}>bytes in per sec</th>
+                                <th colSpan={2} className="border-left border-right opacity">request latency</th>
+                                <th rowSpan={2}>failed request</th>
+
+                                <th rowSpan={2}>cpu</th>
+                                <th rowSpan={2}>disk</th>
+                                <th rowSpan={2}>ram</th>
+                            </tr>
+                            <tr>
+                                <th>95th</th>
+                                <th>99.9th</th>
+
+                                <th>95th</th>
+                                <th>99.9th</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {brokers.map((row, i) => {
+                                const {
+                                    id = null,
+                                    partitions = {},
+                                    production = {},
+                                    consumption = {},
+                                    system: {
+                                        cpu = null,
+                                        disk = null,
+                                        ram = null,
+                                    }
+                                } = row
+                                return (
+                                    <tr key={i} onClick={() => {
+                                        props.history.push(`${match.url}/${id}`)
+                                    }}>
+                                        <td className="align-center">{id}</td>
+
+                                        <td className="align-center">{partitions.total}</td>
+                                        <td className="align-center">{partitions.inSync}</td>
+                                        <td className="align-center">{partitions.outOfSync}</td>
+                                        <td className="align-center">{partitions.underReplicated}</td>
+
+                                        <td className="align-center">{production.bytesInPerSec}</td>
+                                        {Object.keys(production.requestLatency).map((key, idxL) => (
+                                            <td className="align-center"
+                                                key={idxL}>{production.requestLatency[key]}</td>
+                                        ))}
+                                        <td className="align-center">{production.faileRequests}</td>
+
+                                        <td className="align-center">{consumption.bytesInPerSec}</td>
+                                        {Object.keys(consumption.requestLatency).map((key, idxL) => (
+                                            <td className="align-center"
+                                                key={idxL}>{consumption.requestLatency[key]}</td>
+                                        ))}
+                                        <td className="align-center">{consumption.faileRequests}</td>
+
+                                        <td className="align-center">{cpu}</td>
+                                        <td className="align-center">{disk}</td>
+                                        <td className="align-center">{ram}</td>
+                                    </tr>)
+                            })}
+                            </tbody>
+                        </table> : firstReqBrokers && !brokers.length ?
+                            <div className="waiting">ничего не найдено</div> :
+                            <div className="waiting">waiting brokers...</div>}
                     </div>
                 </Route>
                 <Route path={`${match.path}/:id`}>
-                    {brokerActive ? <Broker cluster={cluster} brokers={brokers} {...props}/> :
-                        <div className="waiting">waiting...</div>}
+                    {brokers.length ? <Broker/> : <div className="waiting">waiting broker...</div>}
                 </Route>
             </Switch>
         </>
@@ -100,10 +159,8 @@ const Brokers = (props) => {
 
 Brokers.displayName = 'Brokers'
 
-export default connect()(Brokers)
+const mapStateToProps = state => ({
+    store: state.reducerKafka
+})
 
-const initializeBrockeers = [
-    {id: 1010, name: 'Broker_001', version: '2.0.4', address: 'localhost:3445', controller: 452, velocity: '345/23'},
-    {id: 1, name: 'Broker_002', version: '2.0.4', address: 'localhost:3446', controller: 453, velocity: '145/53'},
-    {id: 2, name: 'Broker_003', version: '2.0.4', address: 'localhost:3447', controller: 454, velocity: '342/8'}
-]
+export default connect(mapStateToProps)(Brokers)
