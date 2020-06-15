@@ -14,7 +14,7 @@ services:
     networks:
       - networks-databases
     ports:
-      - "5000:5000"
+      - "9000:9000"
 
 networks:
   networks-databases:
