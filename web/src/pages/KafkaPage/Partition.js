@@ -38,9 +38,10 @@ const Partition = (props) => {
     }, [partition])
 
     const {
-        name = null,
-        role = null,
-        status = null
+        replicas = [],
+        isr = [],
+        osr = [],
+        leader = null
     } = partition
 
     useEffect(() => {
@@ -66,18 +67,43 @@ const Partition = (props) => {
             </div>
             &nbsp;
             <div>
-                <table className="table md">
+                {firstReqPartition && Object.keys(partition).length ? <table className="table md">
                     <tbody>
                     <tr>
-                        <td className="align-right label"><small>role</small></td>
-                        <td>{role}</td>
-                    </tr>
-                    <tr>
-                        <td className="align-right label"><small>status</small></td>
-                        <td>{status}</td>
+                        <td className="align-right">{id}</td>
+                        <td>
+                            {Array.isArray(replicas) && replicas
+                                .map((el, idxEl) => {
+                                    return (
+                                        <small key={idxEl}>{el}</small>
+                                    )
+                                })
+                                .reduce((prev, curr) => [prev, ', ', curr])}
+                        </td>
+                        <td>
+                            {Array.isArray(isr) && isr
+                                .map((el, idxEl) => {
+                                    return (
+                                        <small key={idxEl}>{el}</small>
+                                    )
+                                })
+                                .reduce((prev, curr) => [prev, ', ', curr])}
+                        </td>
+                        <td>
+                            {Array.isArray(osr) && osr
+                                .map((el, idxEl) => {
+                                    return (
+                                        <small key={idxEl}>{el}</small>
+                                    )
+                                })
+                                .reduce((prev, curr) => [prev, ', ', curr])}
+                        </td>
+                        <td>{leader}</td>
                     </tr>
                     </tbody>
-                </table>
+                </table> : firstReqPartition && !Object.keys(partition).length ?
+                    <div className="waiting">ничего не найдено</div> :
+                    <div className="waiting">waiting brokers...</div>}
             </div>
         </div>
     )
