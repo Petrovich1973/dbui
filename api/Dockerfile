@@ -4,5 +4,5 @@ COPY package.json .
 #RUN npm i nodemon -g && npm i
 RUN npm i
 COPY . .
-EXPOSE 5000
+EXPOSE 9000
 CMD ["npm","run","starting"]
