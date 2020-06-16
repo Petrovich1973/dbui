@@ -68,6 +68,23 @@ const Partition = (props) => {
             &nbsp;
             <div>
                 {firstReqPartition && Object.keys(partition).length ? <table className="table md">
+                    <thead>
+                    <tr>
+                        <th title="Номер партиции в топике">id</th>
+                        <th title="Идентификаторы брокеров-хостов, входящих в кластер, на которых расположена данная партиция">
+                            replicas
+                        </th>
+                        <th title="Идентификаторы брокеров, которые хранят актуальное состояние лидера партиции">
+                            isr
+                        </th>
+                        <th title="out-of-sync request replicas(broker ids) - идентификаторы брокеров, которые «отстают» от состояния лидера">
+                            osr
+                        </th>
+                        <th title="Идентификатор брокера - лидера партиции">
+                            leader
+                        </th>
+                    </tr>
+                    </thead>
                     <tbody>
                     <tr>
                         <td className="align-right">{id}</td>
