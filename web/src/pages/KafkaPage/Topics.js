@@ -58,7 +58,6 @@ const Topics = (props) => {
                         {firstReqTopics && topics.length ? <table className="table">
                             <thead>
                             <tr>
-                                <th>id</th>
                                 <th>name</th>
                                 <th>under Replicated</th>
                                 <th>in Sync</th>
@@ -70,7 +69,6 @@ const Topics = (props) => {
                             <tbody>
                             {topics.map((row, i) => {
                                 const {
-                                    id = null,
                                     name = null,
                                     underReplicated = null,
                                     inSync = null,
@@ -80,9 +78,8 @@ const Topics = (props) => {
                                 } = row
                                 return (
                                     <tr key={i} onClick={() => {
-                                        props.history.push(`${match.url}/${id}`)
+                                        props.history.push(`${match.url}/${name}`)
                                     }}>
-                                        <td className="align-center">{id}</td>
                                         <td className="align-center">
                                             <small>{name}</small>
                                         </td>

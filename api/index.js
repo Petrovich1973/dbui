@@ -116,7 +116,7 @@ app.get('/api/clusters/:cluster/topics', async (req, res) => {
 
 app.get('/api/clusters/:cluster/topics/:id', async (req, res) => {
     await operationTopics()
-    const result = topicsList.find(item => item.id === +req.params.id)
+    const result = topicsList.find(item => item.name === req.params.id)
     if (!result) {
         res.sendStatus(404)
     } else {
@@ -126,7 +126,7 @@ app.get('/api/clusters/:cluster/topics/:id', async (req, res) => {
 
 app.get('/api/clusters/:cluster/topics/:topic/partitions', (req, res) => {
     const result1 = clustersList.find(item => item.id === +req.params.cluster)
-    const result2 = topicsList.find(item => item.id === +req.params.topic)
+    const result2 = topicsList.find(item => item.name === req.params.topic)
 
     const result = result1 && result2
 
