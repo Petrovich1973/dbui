@@ -17,8 +17,8 @@ const OverView = (props) => {
 
     const {
         id = null,
-        host = null,
-        topics = null,
+        hosts = null,
+        topics = {},
         partitions = {
             total: null,
             inSync: null,
@@ -32,6 +32,8 @@ const OverView = (props) => {
             ram: ''
         }
     } = cluster
+
+    const {total = null} = topics
 
     useEffect(() => {
         let timeId = null
@@ -81,14 +83,14 @@ const OverView = (props) => {
 
     return (
         <div className="scrollhide" style={{height: '100%', overflow: 'auto'}}>
-            {id ? <table className="table md">
+            {id !== undefined ? <table className="table md">
                 <tbody>
                 <tr>
                     <td className="align-right label">
                         <small>host</small>
                     </td>
                     <td>
-                        <small>{host}</small>
+                        <small>{hosts}</small>
                     </td>
                     <td colSpan={6}/>
                 </tr>
@@ -101,7 +103,7 @@ const OverView = (props) => {
                     <td className="align-right label">
                         <small>topics</small>
                     </td>
-                    <td>{topics}</td>
+                    <td>{total}</td>
                     <td colSpan={3}/>
                 </tr>
                 <tr>

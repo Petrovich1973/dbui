@@ -3,18 +3,18 @@ services:
 
   web:
     build: ./web
-    networks:
-      - networks-databases
+#    networks:
+#      - networks-databases
     ports:
       - "8080:80"
 
-  api:
-    build: ./api
-    restart: "always"
-    networks:
-      - networks-databases
-    ports:
-      - "9000:9000"
+#  api:
+#    build: ./api
+#    restart: "always"
+#    networks:
+#      - networks-databases
+#    ports:
+#      - "9000:9000"
 
-networks:
-  networks-databases:
+#networks:
+#  networks-databases:

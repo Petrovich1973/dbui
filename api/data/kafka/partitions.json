@@ -1,6 +1,22 @@
 {
   "partitions": [
     {
+      "id": 33,
+      "replicas": [
+        1,
+        0
+      ],
+      "isr": [
+        2,
+        3,
+        1
+      ],
+      "osr": [
+        0
+      ],
+      "leader": 1
+    },
+    {
       "id": 101,
       "replicas": [
         1,

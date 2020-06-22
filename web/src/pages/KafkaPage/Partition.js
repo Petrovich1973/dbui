@@ -89,31 +89,13 @@ const Partition = (props) => {
                     <tr>
                         <td className="align-right">{id}</td>
                         <td>
-                            {Array.isArray(replicas) && replicas
-                                .map((el, idxEl) => {
-                                    return (
-                                        <small key={idxEl}>{el}</small>
-                                    )
-                                })
-                                .reduce((prev, curr) => [prev, ', ', curr])}
+                            {Array.isArray(replicas) && replicas.join(', ')}
                         </td>
                         <td>
-                            {Array.isArray(isr) && isr
-                                .map((el, idxEl) => {
-                                    return (
-                                        <small key={idxEl}>{el}</small>
-                                    )
-                                })
-                                .reduce((prev, curr) => [prev, ', ', curr])}
+                            {Array.isArray(isr) && isr.join(', ')}
                         </td>
                         <td>
-                            {Array.isArray(osr) && osr
-                                .map((el, idxEl) => {
-                                    return (
-                                        <small key={idxEl}>{el}</small>
-                                    )
-                                })
-                                .reduce((prev, curr) => [prev, ', ', curr])}
+                            {Array.isArray(osr) && osr.join(', ')}
                         </td>
                         <td>{leader}</td>
                     </tr>

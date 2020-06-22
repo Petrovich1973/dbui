@@ -100,8 +100,8 @@ const Clusters = (props) => {
                                 const {
                                     id = null,
                                     name = null,
-                                    host = null,
-                                    topics = null,
+                                    hosts = null,
+                                    topics = {},
                                     partitions: {
                                         total = null,
                                         inSync = null,
@@ -122,8 +122,8 @@ const Clusters = (props) => {
                                     }}>
                                         <td className="align-center">{id}</td>
                                         <td className="align-center"><small>{name}</small></td>
-                                        <td className="align-center"><small>{host}</small></td>
-                                        <td className="align-center">{topics}</td>
+                                        <td className="align-center"><small>{hosts}</small></td>
+                                        <td className="align-center">{topics && topics.total}</td>
 
                                         <td className="align-center">{total}</td>
                                         <td className="align-center">{inSync}</td>

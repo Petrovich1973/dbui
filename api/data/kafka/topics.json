@@ -1,7 +1,14 @@
 {
   "topics": [
     {
-      "id": 1010,
+      "name": "test",
+      "underReplicated": 0,
+      "inSync": 10,
+      "outOfSync": 0,
+      "bytesInPerSec": 0.00011664009191548355,
+      "bytesOutPerSec": 0.00011664009191548355
+    },
+    {
       "name": "topicrName_000",
       "underReplicated": 23,
       "inSync": 89,
@@ -10,7 +17,6 @@
       "bytesOutPerSec": 17
     },
     {
-      "id": 1,
       "name": "topicrName_001",
       "underReplicated": 13,
       "inSync": 39,
@@ -19,7 +25,6 @@
       "bytesOutPerSec": 77
     },
     {
-      "id": 2,
       "name": "topicrName_002",
       "underReplicated": 23,
       "inSync": 74,
@@ -28,7 +33,6 @@
       "bytesOutPerSec": 23
     },
     {
-      "id": 3,
       "name": "topicrName_003",
       "underReplicated": 44,
       "inSync": 65,
@@ -37,7 +41,6 @@
       "bytesOutPerSec": 23
     },
     {
-      "id": 4,
       "name": "topicrName_004",
       "underReplicated": 76,
       "inSync": 22,
@@ -46,7 +49,6 @@
       "bytesOutPerSec": 3
     },
     {
-      "id": 5,
       "name": "topicrName_005",
       "underReplicated": 34,
       "inSync": 63,
@@ -55,7 +57,6 @@
       "bytesOutPerSec": 33
     },
     {
-      "id": 6,
       "name": "topicrName_006",
       "underReplicated": 65,
       "inSync": 21,
@@ -64,7 +65,6 @@
       "bytesOutPerSec": 654
     },
     {
-      "id": 7,
       "name": "topicrName_007",
       "underReplicated": 23,
       "inSync": 62,
@@ -73,7 +73,6 @@
       "bytesOutPerSec": 454
     },
     {
-      "id": 8,
       "name": "topicrName_008",
       "underReplicated": 82,
       "inSync": 74,

@@ -137,8 +137,9 @@ app.get('/api/clusters/:cluster/topics/:topic/partitions', (req, res) => {
     }
 })
 
-app.get('/api/clusters/:cluster/topics/:topic/partitions/:id', (req, res) => {
-    const result = partitions.partitions[req.params.id]
+app.get('/api/clusters/:cluster/topics/:topic/partitions/:id', async (req, res) => {
+    await operationPartitions()
+    const result = partitionsList.find(item => item.id === +req.params.id)
     if (!result) {
         res.sendStatus(404)
     } else {
