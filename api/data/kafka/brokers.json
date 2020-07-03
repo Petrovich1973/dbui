@@ -1,7 +1,75 @@
 {
   "brokers": [
     {
-      "id": 1011,
+      "id": 1,
+      "listeners": [
+        "PLAINTEXT://grid1220:9092",
+        "SSL://grid1220:9095"
+      ],
+      "isController": true,
+      "partitions": {
+        "total": 100,
+        "inSync": 50,
+        "outOfSync": 50,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 100,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 2
+      },
+      "consumption": {
+        "bytesOutPerSec": 100,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 2
+      },
+      "system": {
+        "cpu": "80 %",
+        "disk": "100 GB",
+        "ram": "40 GB"
+      }
+    },
+    {
+      "id": 2,
+      "listeners": [
+        "PLAINTEXT://grid1220:9092",
+        "SSL://grid1220:9095"
+      ],
+      "isController": false,
       "partitions": {
         "total": 10,
         "inSync": 5,
@@ -9,115 +77,53 @@
         "underReplicated": 0
       },
       "production": {
-        "bytesInPerSec": 100,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 99
-        },
-        "faileRequests": 1
+        "bytesInPerSec": 10,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 1
       },
       "consumption": {
-        "bytesInPerSec": 100,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 99
-        },
-        "faileRequests": 1
+        "bytesOutPerSec": 10,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 1
       },
       "system": {
-        "cpu": 80,
-        "disk": "100 GB",
-        "ram": "40 GB"
-      }
-    },
-    {
-      "id": 1,
-      "partitions": {
-        "total": 50,
-        "inSync": 25,
-        "outOfSync": 25,
-        "underReplicated": 0
-      },
-      "production": {
-        "bytesInPerSec": 300,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 99
-        },
-        "faileRequests": 1
-      },
-      "consumption": {
-        "bytesInPerSec": 100,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 99
-        },
-        "faileRequests": 1
-      },
-      "system": {
-        "cpu": 90,
-        "disk": "100 GB",
-        "ram": "40 GB"
-      }
-    },
-    {
-      "id": 2,
-      "partitions": {
-        "total": 30,
-        "inSync": 35,
-        "outOfSync": 35,
-        "underReplicated": 0
-      },
-      "production": {
-        "bytesInPerSec": 400,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 99
-        },
-        "faileRequests": 1
-      },
-      "consumption": {
-        "bytesInPerSec": 100,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 79
-        },
-        "faileRequests": 1
-      },
-      "system": {
-        "cpu": 90,
+        "cpu": "80 %",
         "disk": "200 GB",
-        "ram": "40 GB"
-      }
-    },
-    {
-      "id": 3,
-      "partitions": {
-        "total": 20,
-        "inSync": 85,
-        "outOfSync": 85,
-        "underReplicated": 0
-      },
-      "production": {
-        "bytesInPerSec": 300,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 300
-        },
-        "faileRequests": 1
-      },
-      "consumption": {
-        "bytesInPerSec": 100,
-        "requestLatency": {
-          "95th percentile": 100,
-          "99.9th percentile": 200
-        },
-        "faileRequests": 1
-      },
-      "system": {
-        "cpu": 90,
-        "disk": "100 GB",
-        "ram": "40 GB"
+        "ram": "70 GB"
       }
     }
   ]

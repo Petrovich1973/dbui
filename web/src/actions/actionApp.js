@@ -23,7 +23,6 @@ const getReducerApp = () => (dispatch, getState) => getState().reducerApp
 const getReducerKafka = () => (dispatch, getState) => getState().reducerKafka
 
 
-
 // APACHE KAFKA
 
 // Clusters
@@ -206,7 +205,7 @@ export const loadTopic = id => {
                     dispatch({
                         type: types.KAFKA_UPDATE,
                         payload: {
-                            topic: {...dispatch(getReducerKafka()).topics.find(item => item.id === +id)},
+                            topic: {...dispatch(getReducerKafka()).topics.find(item => item.name === id)},
                             waitingTopic: null,
                             firstReqTopic: true,
                         }
@@ -529,46 +528,94 @@ const initializeClusters = [
     }
 ]
 
-const initializeTopics = [
-    {
-        id: 1010,
-        name: 'topicrName_000',
-        underReplicated: 23,
-        inSync: 89,
-        outOfSync: 36,
-        bytesInPerSec: 81,
-        bytesOutPerSec: 17
-    },
-    {
-        id: 1,
-        name: 'topicrName_001',
-        underReplicated: 13,
-        inSync: 39,
-        outOfSync: 32,
-        bytesInPerSec: 41,
-        bytesOutPerSec: 77
-    },
-    {
-        id: 2,
-        name: 'topicrName_002',
-        underReplicated: 23,
-        inSync: 74,
-        outOfSync: 52,
-        bytesInPerSec: 55,
-        bytesOutPerSec: 23
-    }
+const initializeTopics = [{
+    name: "test",
+    underReplicated: 0,
+    inSync: 10,
+    outOfSync: 0,
+    bytesInPerSec: 0.00011664009191548355,
+    bytesOutPerSec: 0.00011664009191548355
+}, {
+    name: "topicrName_000",
+    underReplicated: 23,
+    inSync: 89,
+    outOfSync: 36,
+    bytesInPerSec: 81,
+    bytesOutPerSec: 17
+}, {
+    name: "topicrName_001",
+    underReplicated: 13,
+    inSync: 39,
+    outOfSync: 32,
+    bytesInPerSec: 41,
+    bytesOutPerSec: 77
+}, {
+    name: "topicrName_002",
+    underReplicated: 23,
+    inSync: 74,
+    outOfSync: 52,
+    bytesInPerSec: 55,
+    bytesOutPerSec: 23
+}, {
+    name: "topicrName_003",
+    underReplicated: 44,
+    inSync: 65,
+    outOfSync: 23,
+    bytesInPerSec: 66,
+    bytesOutPerSec: 23
+}, {
+    name: "topicrName_004",
+    underReplicated: 76,
+    inSync: 22,
+    outOfSync: 67,
+    bytesInPerSec: 3,
+    bytesOutPerSec: 3
+}, {
+    name: "topicrName_005",
+    underReplicated: 34,
+    inSync: 63,
+    outOfSync: 22,
+    bytesInPerSec: 88,
+    bytesOutPerSec: 33
+}, {
+    name: "topicrName_006",
+    underReplicated: 65,
+    inSync: 21,
+    outOfSync: 54,
+    bytesInPerSec: 56,
+    bytesOutPerSec: 654
+}, {
+    name: "topicrName_007",
+    underReplicated: 23,
+    inSync: 62,
+    outOfSync: 77,
+    bytesInPerSec: 23,
+    bytesOutPerSec: 454
+}, {
+    name: "topicrName_008",
+    underReplicated: 82,
+    inSync: 74,
+    outOfSync: 25,
+    bytesInPerSec: 43,
+    bytesOutPerSec: 56
+}
 ]
 
 const initializePartitions = [
-    {id: 1010, replicas: [1,2,3,4], isr: [2,3,1], osr: [4], leader: 1},
-    {id: 1, replicas: [5,6,7,8], isr: [6,7,5], osr: [8], leader: 5},
-    {id: 2, replicas: [9,10,11,12], isr: [10,11,9], osr: [12], leader: 9},
-    {id: 3, replicas: [13,14,15,16], isr: [14,15,13], osr: [16], leader: 13}
+    {id: 1010, replicas: [1, 2, 3, 4], isr: [2, 3, 1], osr: [4], leader: 1},
+    {id: 1, replicas: [5, 6, 7, 8], isr: [6, 7, 5], osr: [8], leader: 5},
+    {id: 2, replicas: [9, 10, 11, 12], isr: [10, 11, 9], osr: [12], leader: 9},
+    {id: 3, replicas: [13, 14, 15, 16], isr: [14, 15, 13], osr: [16], leader: 13}
 ]
 
 const initializeBrokers = [
     {
-        id: 1010,
+        id: 1,
+        listeners: [
+            "PLAINTEXT://grid1220:9092",
+            "SSL://grid1220:9095"
+        ],
+        isController: true,
         partitions: {
             total: 10,
             inSync: 5,
@@ -577,52 +624,50 @@ const initializeBrokers = [
         },
         production: {
             bytesInPerSec: 100,
-            requestLatency: {
-                "95th percentile": 100,
-                "99.9th percentile": 99
-            },
-            faileRequests: 1
+            requestLatency: [
+                {
+                    name: "99.9th percentile",
+                    value: 100
+                },
+                {
+                    name: "99th percentile",
+                    value: 100
+                },
+                {
+                    name: "95th percentile",
+                    value: 100
+                },
+                {
+                    name: "50th percentile",
+                    value: 100
+                }
+            ],
+            failedRequests: 1
         },
         consumption: {
-            bytesInPerSec: 100,
-            requestLatency: {
-                "95th percentile": 100,
-                "99.9th percentile": 99
-            },
-            faileRequests: 1
+            bytesOutPerSec: 100,
+            requestLatency: [
+                {
+                    name: "99.9th percentile",
+                    value: 100
+                },
+                {
+                    name: "99th percentile",
+                    value: 100
+                },
+                {
+                    name: "95th percentile",
+                    value: 100
+                },
+                {
+                    name: "50th percentile",
+                    value: 100
+                }
+            ],
+            failedRequests: 1
         },
         system: {
-            cpu: 80,
-            disk: "100 GB",
-            ram: "40 GB"
-        }
-    },
-    {
-        id: 1,
-        partitions: {
-            total: 50,
-            inSync: 25,
-            outOfSync: 25,
-            underReplicated: 0
-        },
-        production: {
-            bytesInPerSec: 300,
-            requestLatency: {
-                "95th percentile": 100,
-                "99.9th percentile": 99
-            },
-            faileRequests: 1
-        },
-        consumption: {
-            bytesInPerSec: 100,
-            requestLatency: {
-                "95th percentile": 100,
-                "99.9th percentile": 99
-            },
-            faileRequests: 1
-        },
-        system: {
-            cpu: 90,
+            cpu: "80 %",
             disk: "100 GB",
             ram: "40 GB"
         }

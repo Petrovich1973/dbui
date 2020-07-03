@@ -59,11 +59,11 @@ const Partitions = (props) => {
                         {firstReqPartitions && partitions.length ? <table className="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Brokers ids</th>
-                                <th>Isr</th>
-                                <th>Osr</th>
-                                <th>Leader</th>
+                                <th className="align-right">ID</th>
+                                <th className="align-left">Brokers ids</th>
+                                <th className="align-left">Isr</th>
+                                <th className="align-left">Osr</th>
+                                <th className="align-left">Leader</th>
                             </tr>
                             </thead>
                             <tbody>

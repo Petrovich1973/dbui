@@ -57,21 +57,23 @@ const Brokers = (props) => {
                     <div className="scrollhide">
                         {firstReqBrokers && brokers.length ? <table className="table">
                             <colgroup>
-                                <col span="1"/>
+                                <col span="3"/>
                                 <col className="col-yellow" span="4"/>
-                                <col className="col-green" span="4"/>
-                                <col className="col-red" span="4"/>
+                                <col className="col-green" span="6"/>
+                                <col className="col-red" span="6"/>
                                 <col className="col-blue" span="3"/>
                             </colgroup>
                             <thead>
                             <tr>
-                                <th rowSpan={3}>id</th>
+                                <th rowSpan={3} className="align-right">id</th>
+                                <th rowSpan={3} className="align-left">listeners</th>
+                                <th rowSpan={3} className="align-left">Controller</th>
 
                                 <th className="border-bottom opacity" colSpan={4}>partitions</th>
 
-                                <th className="border-bottom opacity" colSpan={4}>production</th>
+                                <th className="border-bottom opacity" colSpan={6}>production</th>
 
-                                <th className="border-bottom opacity" colSpan={4}>consumption</th>
+                                <th className="border-bottom opacity" colSpan={6}>consumption</th>
 
                                 <th className="border-bottom opacity" colSpan={3}>system</th>
                             </tr>
@@ -82,10 +84,10 @@ const Brokers = (props) => {
                                 <th rowSpan={2}>under replicated</th>
 
                                 <th rowSpan={2}>bytes in per sec</th>
-                                <th colSpan={2} className="border-left border-right opacity">request latency</th>
+                                <th colSpan={4} className="border-left border-right opacity">request latency</th>
                                 <th rowSpan={2}>failed request</th>
                                 <th rowSpan={2}>bytes in per sec</th>
-                                <th colSpan={2} className="border-left border-right opacity">request latency</th>
+                                <th colSpan={4} className="border-left border-right opacity">request latency</th>
                                 <th rowSpan={2}>failed request</th>
 
                                 <th rowSpan={2}>cpu</th>
@@ -93,17 +95,23 @@ const Brokers = (props) => {
                                 <th rowSpan={2}>ram</th>
                             </tr>
                             <tr>
-                                <th>95th</th>
                                 <th>99.9th</th>
+                                <th>99th</th>
+                                <th>95th</th>
+                                <th>50th</th>
 
-                                <th>95th</th>
                                 <th>99.9th</th>
+                                <th>99th</th>
+                                <th>95th</th>
+                                <th>50th</th>
                             </tr>
                             </thead>
                             <tbody>
                             {brokers.map((row, i) => {
                                 const {
                                     id = null,
+                                    listeners = [],
+                                    isController = false,
                                     partitions = {},
                                     production = {},
                                     consumption = {},
@@ -117,7 +125,9 @@ const Brokers = (props) => {
                                     <tr key={i} onClick={() => {
                                         props.history.push(`${match.url}/${id}`)
                                     }}>
-                                        <td className="align-center">{id}</td>
+                                        <td className="align-right">{id}</td>
+                                        <td><small>{Array.isArray(listeners) && listeners.join(', ')}</small></td>
+                                        <td>{isController ? 'yes' : 'no'}</td>
 
                                         <td className="align-center">{partitions.total}</td>
                                         <td className="align-center">{partitions.inSync}</td>
@@ -125,18 +135,24 @@ const Brokers = (props) => {
                                         <td className="align-center">{partitions.underReplicated}</td>
 
                                         <td className="align-center">{production.bytesInPerSec}</td>
-                                        {Object.keys(production.requestLatency).map((key, idxL) => (
-                                            <td className="align-center"
-                                                key={idxL}>{production.requestLatency[key]}</td>
-                                        ))}
-                                        <td className="align-center">{production.faileRequests}</td>
+                                        {production.requestLatency.map((td, idxL) => {
+                                            const {value} = td
+                                            return (
+                                                <td className="align-center"
+                                                    key={idxL}>{value}</td>
+                                            )
+                                        })}
+                                        <td className="align-center">{production.failedRequests}</td>
 
-                                        <td className="align-center">{consumption.bytesInPerSec}</td>
-                                        {Object.keys(consumption.requestLatency).map((key, idxL) => (
-                                            <td className="align-center"
-                                                key={idxL}>{consumption.requestLatency[key]}</td>
-                                        ))}
-                                        <td className="align-center">{consumption.faileRequests}</td>
+                                        <td className="align-center">{consumption.bytesOutPerSec}</td>
+                                        {consumption.requestLatency.map((td, idxL) => {
+                                            const {value} = td
+                                            return (
+                                                <td className="align-center"
+                                                    key={idxL}>{value}</td>
+                                            )
+                                        })}
+                                        <td className="align-center">{consumption.failedRequests}</td>
 
                                         <td className="align-center">{cpu}</td>
                                         <td className="align-center">{disk}</td>
