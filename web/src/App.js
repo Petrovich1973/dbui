@@ -7,9 +7,10 @@ import routesApp from './routes'
 import Header from "./components/Header"
 import isRight from "./utils/isRight"
 import SettingsPage from "./pages/SettingsPage"
+import {DARK_THEME} from "./constants/common"
 
 const App = (props) => {
-    const {rightsCurrent = [], fontSize = 100} = props
+    const {rightsCurrent = [], fontSize = 100, theme = DARK_THEME} = props
     const [navHeader, setNavHeader] = useState([])
 
     const renderRoutes = routes => routes.filter(route => {
@@ -33,7 +34,7 @@ const App = (props) => {
     }
 
     return (
-        <div className="App" style={{fontSize: `${fontSize}%`}}>
+        <div className={`App ${theme}-theme`} style={{fontSize: `${fontSize}%`}}>
             <Header nav={navHeader}/>
             <Switch>
                 <Redirect exact from='/' to='/console'/>
@@ -60,7 +61,8 @@ App.displayName = 'App'
 
 const mapStateToProps = state => ({
     rightsCurrent: state.reducerApp.current.user.rights,
-    fontSize: state.reducerApp.settings.fontSize
+    fontSize: state.reducerApp.settings.fontSize,
+    theme: state.reducerApp.settings.theme,
 })
 
 export default connect(mapStateToProps)(App)

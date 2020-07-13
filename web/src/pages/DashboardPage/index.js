@@ -5,6 +5,8 @@ import Button from "../../components/Button"
 import Progress from "../../components/Progress"
 import {CircularProgressbar, buildStyles} from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import {DARK_THEME, LIGHT_THEME, POSITION_CENTER} from "../../constants/common";
+import ListSelection from "../../components/ListSelection";
 
 
 const DashboardPage = (props) => {
@@ -68,7 +70,7 @@ const DashboardPage = (props) => {
                         // Colors
                         pathColor: `${cpuColor(percentage)}`,
                         textColor: `${cpuColor(percentage)}`,
-                        trailColor: 'rgba(255,255,255, .2)',
+                        trailColor: '#b9b9b980',
                         backgroundColor: 'red',
                     })}
                 />
@@ -104,6 +106,36 @@ const DashboardPage = (props) => {
                     <Button icon={<IconTopic/>}/>
                     <Button icon={<IconKafka/>}/>
                 </p>
+                <div>
+                    <ListSelection
+                        items={[{}, {}]}/>
+                </div>
+                <div>
+                    <ListSelection
+                        className = 'list-color-selection'
+                        selected= 'one'
+                        width={50}
+                        height={50}
+                        align={POSITION_CENTER}
+                        items={[
+                            {
+                                value: 'one',
+                                bgColor: '#ffffff'
+                            }, {
+                                value: 'two',
+                                bgColor: '#000000'
+                            }, {
+                                value: 'three',
+                                bgColor: '#07984b'
+                            }, {
+                                value: 'four',
+                                bgColor: '#000598'
+                            }, {
+                                value: 'five',
+                                bgColor: '#981e00'
+                            }
+                        ]}/>
+                </div>
             </div>
         </>
     )

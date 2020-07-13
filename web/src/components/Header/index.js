@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink, useHistory} from 'react-router-dom'
 import './Header.less'
-import {IconMore, IconUser} from "../../svg";
+import {IconMore, IconUser, IconLogo} from "../../svg";
 import Button from "../Button";
 
 const Header = ({nav = []}) => {
@@ -15,6 +15,7 @@ const Header = ({nav = []}) => {
     return (
         <header>
             <div className="left">
+                <IconLogo size={'1.6em'}/>
                 <span>Web Console</span>
             </div>
             <nav>

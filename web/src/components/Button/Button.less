@@ -1,4 +1,5 @@
 @import (reference) "../../styles/variables.less";
+@import "./Button-theme";
 
 .button {
   display: inline-block;
@@ -14,7 +15,7 @@
     background-color: transparent;
 
     &.border {
-      border: 1px solid fade(@color, 50%);
+      //border: 1px solid fade(@color, 50%);
     }
     &.radius {
       border-radius: @radius;
@@ -49,7 +50,7 @@
       margin-left: @size / 1.8;
     }
     &:hover {
-      background-image: linear-gradient(fade(@black, 10%) 0%, fade(@black, 10%) 100%);
+      //background-image: linear-gradient(fade(@black, 10%) 0%, fade(@black, 10%) 100%);
     }
   }
 }

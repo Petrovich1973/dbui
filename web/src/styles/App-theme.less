@@ -1,0 +1,291 @@
+@import (reference) "./variables.less";
+@import "./themes/themes";
+
+.buildThemes(@indexPrefix: 1) when (@indexPrefix =< length(@theme-prefix)) {
+  @prefix: extract(@theme-prefix, @indexPrefix);
+  .App.@{prefix} {
+    .themeDefs(@prefix);
+    // start include style
+
+    animation: @animation-colorchange;
+    color: @text-color;
+    background-color: @background-color;
+    background-image: @background-gradient;
+    @keyframes colorchange {
+      0% {
+        background-color: @gray;
+      }
+      25% {
+        background-color: fade(@orange, 6%);
+      }
+      50% {
+        background-color: fade(@purple, 6%);
+      }
+      75% {
+        background-color: darken(@green, 40%);
+      }
+      100% {
+        background-color: @gray;
+      }
+    }
+    main {
+      .content {
+        aside {
+          nav {
+            ul {
+              li {
+                a {
+                  border-bottom-style: dotted;
+                  color: @nav-text-color;
+                  &:hover {
+                    color: @nav-text-color-hover;
+                    background-color: @nav-background-color-hover;
+                  }
+
+                  &.active {
+                    color: @nav-text-color-active;
+                    background-color: @nav-background-color-active;
+                  }
+                }
+              }
+              li:last-child a {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tabs {
+      ul {
+        li {
+          a {
+            &.active {
+              color: @text-color-active;
+            }
+          }
+        }
+      }
+    }
+
+    .breadcrumbs {
+      a:hover {
+        color: @breadcrumbs-text-color-hover;
+      }
+    }
+
+    a {
+      color: @link-text-color;
+      border-bottom: 1px solid @border-color;
+    }
+    a.text-color-active {
+      color: @text-color-active;
+    }
+
+    .white {
+      color: @text-color-active;
+      border-color: @border-color-active;
+    }
+
+    .black {
+      color: @text-color-invert;
+      border-color: @border-color-invert;
+    }
+
+    .gray {
+      color: @gray;
+      border-color: @gray;
+    }
+
+    .blue {
+      color: @blue;
+      border-color: @blue;
+    }
+
+    .green {
+      color: lighten(@green, 30%);
+      border-color: lighten(@green, 30%);
+    }
+
+    .red {
+      color: lighten(@red, 30%);
+      border-color: lighten(@red, 30%);
+    }
+
+    .yellow {
+      color: @yellow;
+      border-color: @yellow;
+    }
+
+    .orange {
+      color: @orange;
+      border-color: @orange;
+    }
+
+    .pink {
+      color: @pink;
+      border-color: @pink;
+    }
+
+    .purple {
+      color: @purple;
+      border-color: @purple;
+    }
+
+    .violet {
+      color: @violet;
+      border-color: @violet;
+    }
+
+    .btn {
+      &.black {
+        background-color: @black;
+        color: @white;
+
+        &.border {
+          border-color: @btn-border-color;
+        }
+
+        &:hover {
+          color: @btn-text-color-hover;
+          background-image: @btn-background-color-hover;
+        }
+      }
+
+      &.white {
+        background-color: @white;
+        color: @black;
+
+        &.border {
+          border-color: @btn-border-color-invert;
+        }
+      }
+
+      &.violet {
+        background-color: @violet;
+        color: @white;
+
+        &.border {
+          border-color: @violet;
+        }
+      }
+
+      &.red {
+        background-color: @red;
+        color: @white;
+
+        &.border {
+          border-color: @red;
+        }
+      }
+
+      &.orange {
+        background-color: @orange;
+        color: @black;
+
+        &.border {
+          border-color: @orange;
+        }
+      }
+
+      &.yellow {
+        background-color: @yellow;
+        color: @black;
+
+        &.border {
+          border-color: @yellow;
+        }
+      }
+
+      &.blue {
+        background-color: @blue;
+        color: @black;
+
+        &.border {
+          border-color: @blue;
+        }
+      }
+
+      &.green {
+        background-color: @green;
+        color: @black;
+
+        &.border {
+          border-color: @green;
+        }
+      }
+    }
+
+    .progress {
+      background-color: @progress-background-color;
+
+      .thumb {
+        background-color: @progress-background-color;
+      }
+    }
+
+    .panel-gray {
+      background-color: @background-color-invert;
+    }
+
+    .border-left {
+      &.opacity {
+        border-color: @border-color-fade;
+      }
+    }
+
+    .border-right {
+      &.opacity {
+        border-color: @border-color-fade;
+      }
+    }
+
+    .border-top {
+      &.opacity {
+        border-color: @border-color-fade;
+      }
+    }
+
+    .border-bottom {
+      &.opacity {
+        border-color: @border-color-fade;
+      }
+    }
+
+    .col-green {
+      background-color: fade(@green, 10%);
+    }
+
+    .col-blue {
+      background-color: fade(@blue, 10%);
+    }
+
+    .col-yellow {
+      background-color: fade(@yellow, 8%);
+    }
+
+    .col-red {
+      background-color: fade(@red, 10%);
+    }
+
+    .table {
+      thead {
+        th {
+          color: @text-color-darken;
+        }
+      }
+
+      thead + tbody {
+        tr:hover {
+          background-color: @background-color-hover-invert;
+        }
+      }
+    }
+
+    // finish include style
+  }
+  .buildThemes(@indexPrefix + 1);
+}
+
+.buildThemes();

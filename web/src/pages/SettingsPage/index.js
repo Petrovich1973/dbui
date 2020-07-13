@@ -5,7 +5,8 @@ import './Settings.less'
 import TitlePage from "../../components/TitlePage"
 import {IconSettings} from "../../svg"
 import Button from "../../components/Button"
-
+import {DARK_THEME, LIGHT_THEME, POSITION_LEFT} from "../../constants/common"
+import ListSelection from "../../components/ListSelection";
 
 const SettingsPage = (props) => {
     const {settings, dispatch} = props
@@ -42,12 +43,19 @@ const SettingsPage = (props) => {
 
     const handleUpdateFontSize = e => {
         const fontSize = e.target.value
-        if(fontSize < 151 && fontSize > 49) {
+        if (fontSize < 151 && fontSize > 49) {
             dispatch({
                 type: type.APP_SETTINGS_UPDATE,
                 payload: {fontSize}
             })
         }
+    }
+
+    const handleUpdateTheme = (theme) => {
+        dispatch({
+            type: type.APP_SETTINGS_UPDATE,
+            payload: {theme}
+        })
     }
 
     return (
@@ -94,9 +102,33 @@ const SettingsPage = (props) => {
                             onClick={handleUpdate}/> : <span>url</span>}
                     </td>
                 </tr>
+                <tr className="rowGroup">
+                    <td className="align-right">
+                        <h6>themes App</h6>
+                    </td>
+                    <td colSpan={2}>
+                        <ListSelection
+                            className = 'list-color-selection'
+                            selected={settings.theme}
+                            onClick={handleUpdateTheme}
+                            align={POSITION_LEFT}
+                            width={20}
+                            height={20}
+                            items={[
+                                {
+                                    value: LIGHT_THEME,
+                                    bgColor: '#ffffff',
+                                    fnParam: LIGHT_THEME
+                                }, {
+                                    value: DARK_THEME,
+                                    bgColor: '#000000',
+                                    fnParam: DARK_THEME
+                                }
+                            ]}/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
-
         </div>
     )
 }

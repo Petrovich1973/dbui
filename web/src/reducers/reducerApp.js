@@ -1,5 +1,6 @@
 import * as type from '../constants/actionTypes'
 import * as api from "../constants/api"
+import {DARK_THEME} from "../constants/common"
 
 const initialState = {
     current: {
@@ -12,7 +13,8 @@ const initialState = {
     settings: {
         // hostApi: '/api',
         hostApi: api.url_host,
-        fontSize: 100
+        fontSize: 100,
+        theme: DARK_THEME
     }
 }
 

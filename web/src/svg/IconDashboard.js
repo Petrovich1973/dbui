@@ -6,6 +6,7 @@ export const IconDashboard = props => {
         <svg
             style={style}
             height={size}
+            width={size}
             fill={color || "currentColor"}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 384 384"

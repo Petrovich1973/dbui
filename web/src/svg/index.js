@@ -13,3 +13,5 @@ export { IconMore } from './IconMore'
 export { IconDelete } from './IconDelete'
 export { IconFile } from './IconFile'
 export { IconFolder } from './IconFolder'
+
+export { IconLogo } from './IconLogo'

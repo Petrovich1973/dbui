@@ -1,0 +1,5 @@
+export const DARK_THEME = 'dark'
+export const LIGHT_THEME = 'light'
+export const POSITION_LEFT = 'left'
+export const POSITION_RIGHT = 'right'
+export const POSITION_CENTER = 'center'
