@@ -1,0 +1,199 @@
+@import (reference) "../../styles/variables.less";
+@import "./Input-theme";
+
+.fieldInput {
+  font-size: @size / 1.2;
+  margin-bottom: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+
+  &.row {
+    flex-direction: row;
+    align-items: baseline;
+
+    &.reverse {
+      flex-direction: row-reverse;
+
+      .labelBlock {
+        margin-right: 0;
+      }
+
+      .inputBlock {
+        margin-right: 1rem;
+      }
+    }
+
+    .labelBlock {
+      margin-right: 1rem;
+      flex: 0 1 auto;
+    }
+
+    .inputBlock {
+      flex: 2 1 auto;
+    }
+  }
+
+  .labelBlock {
+    display: block;
+  }
+
+  &.icon-right {
+    .inputBlock {
+      flex-direction: row-reverse;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: @size/4 0;
+
+    &:hover, &:focus {
+      transition: all .2s;
+      padding: @size/4 @size /2;
+    }
+
+    outline: none;
+
+    &:focus {
+      border-color: transparent;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    padding: @size/4 0;
+
+    &:hover, &:focus {
+      transition: all .2s;
+      padding: @size/4 @size /2;
+    }
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:focus {
+      border-color: transparent;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+
+    &[type="checkbox"],
+    &[type="radio"] {
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+      display: inline-block;
+    }
+
+    &:hover[type="range"], &:focus[type="range"] {
+      padding: @size/4 0;
+    }
+  }
+
+  &.lg {
+    font-size: @lg / 1.2;
+
+    input, textarea {
+      padding: @lg / 4 0;
+
+      &:hover, &:focus {
+        transition: all .2s;
+        padding: @lg/4 @lg /2;
+      }
+
+      &:hover[type="range"], &:focus[type="range"] {
+        padding: @lg/4 0;
+      }
+    }
+
+    .inputBlock {
+      .icon {
+        width: @lg / 1.2;
+        height: @lg / 1.2;
+        padding: @lg / 3;
+        margin-right: @lg / 1.2;
+      }
+    }
+  }
+
+  &.sm {
+    font-size: @sm / 1.2;
+
+    input, textarea {
+      padding: @sm/4 0;
+
+      &:hover, &:focus {
+        transition: all .2s;
+        padding: @sm/4 @sm /2;
+      }
+
+      &:hover[type="range"], &:focus[type="range"] {
+        padding: @sm/4 0;
+      }
+    }
+
+    .inputBlock {
+      .icon {
+        width: @sm / 1.2;
+        height: @sm / 1.2;
+        padding: @sm / 3;
+        margin-right: @sm / 1.2;
+      }
+    }
+  }
+
+  label {
+    margin-bottom: .35rem;
+    display: inline-block;
+    opacity: .7;
+    font-style: italic;
+  }
+
+  .inputRequired {
+    color: red;
+  }
+
+  .inputBlock {
+    display: flex;
+    align-items: flex-start;
+
+    .icon {
+      display: block;
+      width: @size / 1.2;
+      height: @size / 1.2;
+      padding: @size / 3;
+      margin-right: @size / 1.2;
+      background-color: #c0c0c02e;
+    }
+
+    span.input {
+      flex: 1 1 auto;
+    }
+
+  }
+
+  .message {
+    vertical-align: text-top;
+    font-size: 70%;
+    margin-top: .25rem;
+    width: 100%;
+    display: inline-block;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,702 @@
+{
+  "clusters": [
+    {
+      "id": 1010,
+      "name": "clusterName_000",
+      "host": "localhost:9100",
+      "topics": 23,
+      "partitions": {
+        "total": 78,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 27,
+        "disk": "1000Gb/1200Gb",
+        "ram": "1320Mb/2400Mb"
+      }
+    },
+    {
+      "id": 1,
+      "name": "clusterName_001",
+      "host": "localhost:4100",
+      "topics": 42,
+      "partitions": {
+        "total": 82,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 82,
+        "disk": "2000Gb/3000Gb",
+        "ram": "6200Mb/240000Mb"
+      }
+    },
+    {
+      "id": 2,
+      "name": "clusterName_002",
+      "host": "localhost:2100",
+      "topics": 24,
+      "partitions": {
+        "total": 81,
+        "online": 17,
+        "inSync": 58,
+        "outOfSync": 20,
+        "underReplicated": 0
+      },
+      "controllerId": 32461,
+      "system": {
+        "cpu": 67,
+        "disk": "1000Gb/2000Gb",
+        "ram": "7200Mb/8400Mb"
+      }
+    },
+    {
+      "id": 3,
+      "name": "clusterName_003",
+      "host": "localhost:3130",
+      "topics": 34,
+      "partitions": {
+        "total": 66,
+        "online": 47,
+        "inSync": 88,
+        "outOfSync": 21,
+        "underReplicated": 1
+      },
+      "controllerId": 72461,
+      "system": {
+        "cpu": 97,
+        "disk": "7800Gb/9200Gb",
+        "ram": "350Mb/800Mb"
+      }
+    },
+    {
+      "id": 4,
+      "name": "clusterName_004",
+      "host": "localhost:4430",
+      "topics": 94,
+      "partitions": {
+        "total": 16,
+        "online": 88,
+        "inSync": 22,
+        "outOfSync": 73,
+        "underReplicated": 3
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 96,
+        "disk": "1000Gb/120000Gb",
+        "ram": "6200Mb/24000Mb"
+      }
+    },
+    {
+      "id": 5,
+      "name": "clusterName_005",
+      "host": "localhost:4550",
+      "topics": 935,
+      "partitions": {
+        "total": 106,
+        "online": 288,
+        "inSync": 722,
+        "outOfSync": 173,
+        "underReplicated": 343
+      },
+      "controllerId": 12461,
+      "system": {
+        "cpu": 60,
+        "disk": "1000Gb/120000Gb",
+        "ram": "16200Mb/24000Mb"
+      }
+    }
+  ],
+  "brokers": [
+    {
+      "id": 1,
+      "listeners": [
+        "PLAINTEXT://grid1220:9092",
+        "SSL://grid1220:9095"
+      ],
+      "isController": true,
+      "partitions": {
+        "total": 10,
+        "inSync": 5,
+        "outOfSync": 5,
+        "underReplicated": 0
+      },
+      "production": {
+        "bytesInPerSec": 100,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 1
+      },
+      "consumption": {
+        "bytesOutPerSec": 100,
+        "requestLatency": [
+          {
+            "name": "99.9th percentile",
+            "value": 100
+          },
+          {
+            "name": "99th percentile",
+            "value": 100
+          },
+          {
+            "name": "95th percentile",
+            "value": 100
+          },
+          {
+            "name": "50th percentile",
+            "value": 100
+          }
+        ],
+        "failedRequests": 1
+      },
+      "system": {
+        "cpu": "80 %",
+        "disk": "100 GB",
+        "ram": "40 GB"
+      }
+    }
+  ],
+  "partitions": [
+    {
+      "id": 1010,
+      "replicas": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "isr": [
+        2,
+        3,
+        1
+      ],
+      "osr": [
+        4
+      ],
+      "leader": 1
+    },
+    {
+      "id": 1,
+      "replicas": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "isr": [
+        6,
+        7,
+        5
+      ],
+      "osr": [
+        8
+      ],
+      "leader": 5
+    },
+    {
+      "id": 2,
+      "replicas": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "isr": [
+        10,
+        11,
+        9
+      ],
+      "osr": [
+        12
+      ],
+      "leader": 9
+    },
+    {
+      "id": 3,
+      "replicas": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "isr": [
+        14,
+        15,
+        13
+      ],
+      "osr": [
+        16
+      ],
+      "leader": 13
+    }
+  ],
+  "topics": [
+    {
+      "name": "test7",
+      "underReplicated": 0,
+      "inSync": 10,
+      "outOfSync": 0,
+      "bytesInPerSec": 0.00011664009191548355,
+      "bytesOutPerSec": 0.00011664009191548355
+    },
+    {
+      "name": "topicName1",
+      "underReplicated": 0,
+      "inSync": 0,
+      "outOfSync": 0,
+      "bytesInPerSec": 0,
+      "bytesOutPerSec": 0
+    },
+    {
+      "name": "topicName22",
+      "underReplicated": 0,
+      "inSync": 0,
+      "outOfSync": 0,
+      "bytesInPerSec": 0,
+      "bytesOutPerSec": 0
+    }
+  ],
+  "topicsConfigs": [
+    {
+      "name": "test7",
+      "partitions": "224",
+      "replication-factor": "4446",
+      "replica-assignment": "",
+      "config": [
+        {
+          "cleanup.policy": "delete666777bdfgdgdg"
+        },
+        {
+          "compression.type": "producerd"
+        },
+        {
+          "delete.retention.ms": 86400000
+        },
+        {
+          "file.delete.delay.ms": 60000
+        },
+        {
+          "flush.messages": 9223372036854776000
+        },
+        {
+          "flush.ms": 9223372036854776000
+        },
+        {
+          "follower.replication.throttled.replicas": ""
+        },
+        {
+          "index.interval.bytes": 4096
+        },
+        {
+          "leader.replication.throttled.replicas": ""
+        },
+        {
+          "max.compaction.lag.ms": 9223372036854776000
+        },
+        {
+          "max.message.bytes": 1048588
+        },
+        {
+          "message.downconversion.enable": true
+        },
+        {
+          "message.format.version": "2.5-IV0"
+        },
+        {
+          "message.timestamp.difference.max.ms": 9223372036854776000
+        },
+        {
+          "message.timestamp.type": "CreateTime"
+        },
+        {
+          "min.cleanable.dirty.ratio": 0.5
+        },
+        {
+          "min.compaction.lag.ms": 0
+        },
+        {
+          "min.insync.replicas": 2
+        },
+        {
+          "preallocate": false
+        },
+        {
+          "retention.bytes": -1
+        },
+        {
+          "retention.ms": 604800000
+        },
+        {
+          "segment.bytes": 1073741824
+        },
+        {
+          "segment.index.bytes": 10485760
+        },
+        {
+          "segment.jitter.ms": 0
+        },
+        {
+          "segment.ms": 604800000
+        },
+        {
+          "unclean.leader.election.enable": false
+        }
+      ]
+    },
+    {
+      "name": "topicName1",
+      "partitions": 3,
+      "replication-factor": 2,
+      "replica-assignment": "",
+      "config": [
+        {
+          "cleanup.policy": "delete"
+        },
+        {
+          "compression.type": "producer"
+        },
+        {
+          "delete.retention.ms": 86400000
+        },
+        {
+          "file.delete.delay.ms": 60000
+        },
+        {
+          "flush.messages": 9223372036854776000
+        },
+        {
+          "flush.ms": 9223372036854776000
+        },
+        {
+          "follower.replication.throttled.replicas": ""
+        },
+        {
+          "index.interval.bytes": 4096
+        },
+        {
+          "leader.replication.throttled.replicas": ""
+        },
+        {
+          "max.compaction.lag.ms": 9223372036854776000
+        },
+        {
+          "max.message.bytes": 1048588
+        },
+        {
+          "message.downconversion.enable": true
+        },
+        {
+          "message.format.version": "2.5-IV0"
+        },
+        {
+          "message.timestamp.difference.max.ms": 9223372036854776000
+        },
+        {
+          "message.timestamp.type": "CreateTime"
+        },
+        {
+          "min.cleanable.dirty.ratio": 0.5
+        },
+        {
+          "min.compaction.lag.ms": 0
+        },
+        {
+          "min.insync.replicas": 2
+        },
+        {
+          "preallocate": false
+        },
+        {
+          "retention.bytes": -1
+        },
+        {
+          "retention.ms": 604800000
+        },
+        {
+          "segment.bytes": 1073741824
+        },
+        {
+          "segment.index.bytes": 10485760
+        },
+        {
+          "segment.jitter.ms": 0
+        },
+        {
+          "segment.ms": 604800000
+        },
+        {
+          "unclean.leader.election.enable": false
+        }
+      ],
+      "underReplicated": 0,
+      "inSync": 0,
+      "outOfSync": 0,
+      "bytesInPerSec": 0,
+      "bytesOutPerSec": 0
+    },
+    {
+      "name": "topicName22",
+      "partitions": 3,
+      "replication-factor": 2,
+      "replica-assignment": "",
+      "config": [
+        {
+          "cleanup.policy": "delete"
+        },
+        {
+          "compression.type": "producer"
+        },
+        {
+          "delete.retention.ms": 86400000
+        },
+        {
+          "file.delete.delay.ms": 60000
+        },
+        {
+          "flush.messages": 9223372036854776000
+        },
+        {
+          "flush.ms": 9223372036854776000
+        },
+        {
+          "follower.replication.throttled.replicas": ""
+        },
+        {
+          "index.interval.bytes": 4096
+        },
+        {
+          "leader.replication.throttled.replicas": ""
+        },
+        {
+          "max.compaction.lag.ms": 9223372036854776000
+        },
+        {
+          "max.message.bytes": 1048588
+        },
+        {
+          "message.downconversion.enable": true
+        },
+        {
+          "message.format.version": "2.5-IV0"
+        },
+        {
+          "message.timestamp.difference.max.ms": 9223372036854776000
+        },
+        {
+          "message.timestamp.type": "CreateTime"
+        },
+        {
+          "min.cleanable.dirty.ratio": 0.5
+        },
+        {
+          "min.compaction.lag.ms": 0
+        },
+        {
+          "min.insync.replicas": 2
+        },
+        {
+          "preallocate": false
+        },
+        {
+          "retention.bytes": -1
+        },
+        {
+          "retention.ms": 604800000
+        },
+        {
+          "segment.bytes": 1073741824
+        },
+        {
+          "segment.index.bytes": 10485760
+        },
+        {
+          "segment.jitter.ms": 0
+        },
+        {
+          "segment.ms": 604800000
+        },
+        {
+          "unclean.leader.election.enable": false
+        }
+      ],
+      "underReplicated": 0,
+      "inSync": 0,
+      "outOfSync": 0,
+      "bytesInPerSec": 0,
+      "bytesOutPerSec": 0
+    }
+  ],
+  "defaultTopic": {
+    "name": "topicName",
+    "partitions": 3,
+    "replication-factor": 2,
+    "replica-assignment": "",
+    "config": [
+      {
+        "cleanup.policy": "delete"
+      },
+      {
+        "compression.type": "producer"
+      },
+      {
+        "delete.retention.ms": 86400000
+      },
+      {
+        "file.delete.delay.ms": 60000
+      },
+      {
+        "flush.messages": 9223372036854776000
+      },
+      {
+        "flush.ms": 9223372036854776000
+      },
+      {
+        "follower.replication.throttled.replicas": ""
+      },
+      {
+        "index.interval.bytes": 4096
+      },
+      {
+        "leader.replication.throttled.replicas": ""
+      },
+      {
+        "max.compaction.lag.ms": 9223372036854776000
+      },
+      {
+        "max.message.bytes": 1048588
+      },
+      {
+        "message.downconversion.enable": true
+      },
+      {
+        "message.format.version": "2.5-IV0"
+      },
+      {
+        "message.timestamp.difference.max.ms": 9223372036854776000
+      },
+      {
+        "message.timestamp.type": "CreateTime"
+      },
+      {
+        "min.cleanable.dirty.ratio": 0.5
+      },
+      {
+        "min.compaction.lag.ms": 0
+      },
+      {
+        "min.insync.replicas": 2
+      },
+      {
+        "preallocate": false
+      },
+      {
+        "retention.bytes": -1
+      },
+      {
+        "retention.ms": 604800000
+      },
+      {
+        "segment.bytes": 1073741824
+      },
+      {
+        "segment.index.bytes": 10485760
+      },
+      {
+        "segment.jitter.ms": 0
+      },
+      {
+        "segment.ms": 604800000
+      },
+      {
+        "unclean.leader.election.enable": false
+      }
+    ],
+    "underReplicated": 0,
+    "inSync": 0,
+    "outOfSync": 0,
+    "bytesInPerSec": 0,
+    "bytesOutPerSec": 0
+  },
+  "acls": [
+    {
+      "resource":{
+        "resourceType":"DelegationToken",
+        "name":"resource_foo"
+      },
+      "acls":[
+        {
+          "principal":"any",
+          "host":"baz",
+          "operation":"Read",
+          "permissionType":"Any"
+        },
+        {
+          "principal":"user",
+          "host":"bar",
+          "operation":"ClusterAction",
+          "permissionType":"Any"
+        },
+        {
+          "principal":"user",
+          "host":"bar",
+          "operation":"Any",
+          "permissionType":"Deny"
+        },
+        {
+          "principal":"user",
+          "host":"baz",
+          "operation":"AlterConfigs",
+          "permissionType":"Deny"
+        },
+        {
+          "principal":"user",
+          "host":"bar",
+          "operation":"IdempotentWrite",
+          "permissionType":"Unknown"
+        },
+        {
+          "principal":"admin",
+          "host":"baz",
+          "operation":"Delete",
+          "permissionType":"Deny"
+        },
+        {
+          "principal":"any",
+          "host":"bar",
+          "operation":"Unknown",
+          "permissionType":"Any"
+        },
+        {
+          "principal":"user",
+          "host":"bar",
+          "operation":"All",
+          "permissionType":"Any"
+        }
+      ]
+    }
+  ]
+}

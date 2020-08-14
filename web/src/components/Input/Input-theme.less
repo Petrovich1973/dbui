@@ -1,0 +1,82 @@
+@import (reference) "../../styles/variables.less";
+@import "../../styles/themes/themes";
+
+.buildThemes(@indexPrefix: 1) when (@indexPrefix =< length(@theme-prefix)) {
+  @prefix: extract(@theme-prefix, @indexPrefix);
+  .App.@{prefix} {
+    .themeDefs(@prefix);
+    // start include style
+
+    .fieldInput {
+      &.error {
+        input {
+          color: #981e00;
+        }
+      }
+
+      .inputBlock {
+        .icon {
+          background-color: #80808047;
+        }
+      }
+
+
+      input {
+        color: @text-color-darken;
+
+        &:hover {
+          background-color: fade(@input-background-color-focus, 4%);
+        }
+
+        &:focus {
+          background-color: @input-background-color-focus;
+        }
+
+        &.disabled {
+          color: #80808047;
+        }
+
+        &.readonly {
+          color: #80808047;
+        }
+      }
+
+      textarea {
+        color: @text-color-darken;
+        border: none;
+        background-color: fade(@input-background-color-focus, .5%);
+
+        &:hover {
+          background-color: fade(@input-background-color-focus, 4%);
+        }
+
+        &:focus {
+          background-color: @input-background-color-focus;
+        }
+
+        &.disabled {
+          color: #80808047;
+        }
+
+        &.readonly {
+          color: #80808047;
+        }
+      }
+
+      .message {
+        color: fade(@text-color-darken, 60%);
+      }
+
+      &.error {
+        .message {
+          color: #dc3545;
+        }
+      }
+    }
+
+    // finish include style
+  }
+  .buildThemes(@indexPrefix + 1);
+}
+
+.buildThemes();

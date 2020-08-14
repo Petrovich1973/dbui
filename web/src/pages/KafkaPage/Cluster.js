@@ -6,7 +6,7 @@ import OverView from "./OverView"
 import Brokers from "./Brokers"
 import Topics from "./Topics"
 import Consumers from "./Consumers"
-import Acls from "./Acls"
+import {Acls} from "./Acls/Acls"
 import KafkaConnect from "./KafkaConnect"
 import Settings from "./Settings"
 import RollingRestart from "./RollingRestart"
@@ -15,10 +15,11 @@ import KafkaSberEdition from "./KafkaSberEdition"
 import TitlePage from "../../components/TitlePage"
 import {loadCluster} from "../../actions/actionApp";
 import {IconBroker, IconConsumers, IconOverview, IconTopic} from "../../svg";
+import {IconIdCard} from "../../svg/IconIdCard";
 
 const Cluster = (props) => {
     const {store = {}, dispatch} = props
-    const {cluster = {}, waitingCluster = null, firstReqCluster = false} = store
+    const {cluster = {}, firstReqCluster = false} = store
     const match = useRouteMatch()
     const {id} = useParams()
 
@@ -27,7 +28,7 @@ const Cluster = (props) => {
         {title: 'Brokers', path: `/brokers`, component: Brokers, icon: <IconBroker size={'1em'}/>},
         {title: 'Topics', path: `/topics`, component: Topics, icon: <IconTopic size={'1em'}/>},
         {title: 'Consumers', path: `/consumers`, component: Consumers, icon: <IconConsumers size={'1em'}/>},
-        {title: 'ACLs', path: `/acls`, component: Acls, icon: null},
+        {title: 'ACLs', path: `/acls`, component: Acls, icon: <IconIdCard size={'1em'} />},
         {title: 'Kafka Connect', path: `/kafkaConnect`, component: KafkaConnect, icon: null},
         {title: 'Settings', path: `/settings`, component: Settings, icon: null},
         {title: 'Rolling Restart', path: `/rollingRestart`, component: RollingRestart, icon: null},
@@ -60,7 +61,7 @@ const Cluster = (props) => {
 
     return (
         <>
-            {firstReqCluster ? <TitlePage tag={'h2'} label={<>
+            {firstReqCluster && Object.keys(cluster).length ? <TitlePage tag={'h2'} label={<>
                 <NavLink to={`${match.url}`} className="white">
                     <small>
                         <small>
@@ -70,9 +71,11 @@ const Cluster = (props) => {
                     &nbsp;
                     {name}
                 </NavLink>
-            </>}/> : <h4 style={{padding: '0 1em'}}>waiting...</h4>}
+            </>}/> : firstReqCluster && !Object.keys(cluster).length ?
+                <h4 style={{padding: '0 1em'}}>ничего не найдено</h4> :
+                <h4 style={{padding: '0 1em'}}>waiting...</h4>}
 
-            {firstReqCluster ? <div className="content">
+            {firstReqCluster && Object.keys(cluster).length ? <div className="content">
                 <aside>
                     <nav className="scrollhide">
                         <ul>

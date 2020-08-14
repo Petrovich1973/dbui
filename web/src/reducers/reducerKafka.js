@@ -23,6 +23,7 @@ const initialState = {
     firstReqTopics: false,
 
     topic: {},
+    topicConfig: {},
     waitingTopic: null,
     firstReqTopic: false,
 
@@ -41,6 +42,12 @@ const initialState = {
     broker: {},
     waitingBroker: null,
     firstReqBroker: false,
+
+    topicRedirect: null,
+    elementsWaiting: [],
+
+    defaultTopic: null,
+    waitingDefaultTopic: null
 }
 
 const reducer = (state = initialState, action) => {

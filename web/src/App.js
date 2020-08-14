@@ -4,13 +4,22 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {NotFoundPage} from './pages'
 import './styles/App.less'
 import routesApp from './routes'
-import Header from "./components/Header"
+import {Header} from "./components/Header"
 import isRight from "./utils/isRight"
 import SettingsPage from "./pages/SettingsPage"
+import {LIGHT_THEME} from "./constants/common"
+import {LocalStorageAppHoc} from "./components/LocalStorageAppHoc";
+import * as type from "./constants/actionTypes";
+import {dispatcher} from "./store";
+import {themes} from "./themes";
 
 const App = (props) => {
-    const {rightsCurrent = [], fontSize = 100} = props
+    const {rightsCurrent = [], settings: { fontSize = 100, theme = LIGHT_THEME} } = props
     const [navHeader, setNavHeader] = useState([])
+
+    useEffect(() => {
+        theme && dispatcher.theme.setTheme(themes[theme])
+    }, [theme])
 
     const renderRoutes = routes => routes.filter(route => {
         const {rights = []} = route
@@ -33,7 +42,7 @@ const App = (props) => {
     }
 
     return (
-        <div className="App" style={{fontSize: `${fontSize}%`}}>
+        <div className={`App ${theme}-theme`} style={{fontSize: `${fontSize}%`}}>
             <Header nav={navHeader}/>
             <Switch>
                 <Redirect exact from='/' to='/console'/>
@@ -60,7 +69,16 @@ App.displayName = 'App'
 
 const mapStateToProps = state => ({
     rightsCurrent: state.reducerApp.current.user.rights,
-    fontSize: state.reducerApp.settings.fontSize
+    settings: {
+        fontSize: state.reducerApp.settings.fontSize,
+        theme: state.reducerApp.settings.theme
+    }
 })
 
-export default connect(mapStateToProps)(App)
+const localStorageParams = {
+    action: type.APP_SETTINGS_UPDATE,
+    reducerName: 'settings',
+    target: '/settings'
+}
+
+export default connect(mapStateToProps)(LocalStorageAppHoc(App, localStorageParams))

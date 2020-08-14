@@ -174,7 +174,7 @@ const Broker = (props) => {
                     </tbody>
                 </table> : firstReqBroker && !Object.keys(broker).length ?
                     <div className="waiting">ничего не найдено</div> :
-                    <div className="waiting">waiting brokers...</div>}
+                    <div className="waiting">waiting broker...</div>}
             </div>
             &nbsp;
             <nav className="tabs">

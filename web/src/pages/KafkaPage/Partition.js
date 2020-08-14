@@ -102,7 +102,7 @@ const Partition = (props) => {
                     </tbody>
                 </table> : firstReqPartition && !Object.keys(partition).length ?
                     <div className="waiting">ничего не найдено</div> :
-                    <div className="waiting">waiting brokers...</div>}
+                    <div className="waiting">waiting partition...</div>}
             </div>
         </div>
     )

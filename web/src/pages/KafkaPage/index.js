@@ -15,7 +15,7 @@ const KafkaPage = (props) => {
     }, [match.url])
 
     return (
-        <main>
+        <div className='main'>
 
             <TitlePage
                 icon={<IconKafka size={'1em'}/>}
@@ -39,7 +39,7 @@ const KafkaPage = (props) => {
                 </Route>
             </Switch>
 
-        </main>
+        </div>
     )
 }
 

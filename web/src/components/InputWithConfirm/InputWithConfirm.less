@@ -1,0 +1,160 @@
+@import (reference) "../../styles/variables.less";
+@import "./InputWithConfirm-theme";
+
+.fieldInputWithConfig {
+  font-size: @size / 1.2;
+  margin-bottom: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+
+  &.row {
+    flex-direction: row;
+    align-items: baseline;
+
+    &.reverse {
+      flex-direction: row-reverse;
+
+      .labelBlock {
+        margin-right: 0;
+      }
+
+      .inputBlock {
+        margin-right: 1rem;
+      }
+    }
+
+    .labelBlock {
+      margin-right: 1rem;
+      flex: 0 1 auto;
+    }
+
+    .inputBlock {
+      flex: 2 1 auto;
+    }
+  }
+
+  .labelBlock {
+    display: block;
+  }
+
+  &.icon-right {
+    .inputBlock {
+      flex-direction: row-reverse;
+    }
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: @size / 2 0;
+
+    &:hover, &:focus {
+      transition: all .2s;
+      padding: @size/4 @size /2;
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:focus {
+      border-color: transparent;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &.lg {
+    font-size: @lg / 1.2;
+
+    input {
+      padding: @lg /4 0;
+
+      &:hover, &:focus {
+        transition: all .2s;
+        padding: @lg/4 @lg /2;
+      }
+    }
+
+    .inputBlock {
+      .icon {
+        width: @lg / 1.2;
+        height: @lg / 1.2;
+        padding: @lg / 3;
+      }
+    }
+  }
+
+  &.sm {
+    font-size: @sm / 1.2;
+
+    input {
+      padding: @sm /4 0;
+
+      &:hover, &:focus {
+        transition: all .2s;
+        padding: @sm/4 @sm /2;
+      }
+    }
+
+    .inputBlock {
+      .icon {
+        width: @sm / 1.2;
+        height: @sm / 1.2;
+        padding: @sm / 3;
+      }
+    }
+  }
+
+  label {
+    font-size: 90%;
+    margin-bottom: .35rem;
+    display: inline-block;
+    opacity: .7;
+    font-style: italic;
+  }
+
+  .inputRequired {
+    color: red;
+  }
+
+  .inputBlock {
+    display: flex;
+    align-items: flex-start;
+
+    .icon {
+      display: block;
+      width: @size / 1.2;
+      height: @size / 1.2;
+      padding: @size / 3;
+      background-color: #c0c0c02e;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    span.input {
+      flex: 1 1 auto;
+    }
+
+  }
+
+  .message {
+    vertical-align: text-top;
+    font-size: 70%;
+    margin-top: .25rem;
+    width: 100%;
+    display: inline-block;
+    font-weight: 300;
+  }
+}

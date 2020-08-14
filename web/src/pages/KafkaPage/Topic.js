@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import * as type from '../../constants/actionTypes'
-import {Redirect, Route, Switch, NavLink, Link, useParams, useRouteMatch} from 'react-router-dom'
+import {Route, Switch, NavLink, Link, useParams, useRouteMatch, Redirect} from 'react-router-dom'
 import Partitions from "./Partitions"
 import {loadTopic} from "../../actions/actionApp";
+import {SideBar} from "../../components/SideBar";
+import TopicConfig from "./TopicConfig";
 
 const Topic = (props) => {
     const {store = {}, dispatch} = props
@@ -63,7 +65,8 @@ const Topic = (props) => {
     }, [match.url, topic])
 
     return (
-        <div className="scrollhide" style={{fontSize: '100%', height: '100%', overflow: 'auto'}}>
+        <>
+        <div className="mainPanel scrollhide" style={{fontSize: '100%', height: '100%', overflow: 'auto'}}>
             <nav className="tabs">
                 <ul>
                     <li>
@@ -77,7 +80,7 @@ const Topic = (props) => {
             </nav>
             &nbsp;
             <div>
-                <table className="table md">
+                {firstReqTopic && Object.keys(topic).length ? <table className="table md">
                     <tbody>
                     <tr>
                         <td className="align-right label">
@@ -109,7 +112,9 @@ const Topic = (props) => {
                         <td>{bytesInPerSec}</td>
                     </tr>
                     </tbody>
-                </table>
+                </table> : firstReqTopic && !Object.keys(topic).length ?
+                    <div className="waiting">ничего не найдено</div> :
+                    <div className="waiting">waiting topic...</div>}
             </div>
             &nbsp;
             <nav className="tabs">
@@ -136,6 +141,10 @@ const Topic = (props) => {
                     })}
             </Switch>
         </div>
+        <SideBar className="align-left" width={'30%'} title="">
+            <TopicConfig/>
+        </SideBar>
+        </>
     )
 }
 

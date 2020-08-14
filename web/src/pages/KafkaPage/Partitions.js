@@ -96,7 +96,7 @@ const Partitions = (props) => {
                             </tbody>
                         </table> : firstReqPartitions && !partitions.length ?
                             <div className="waiting">ничего не найдено</div> :
-                            <div className="waiting">waiting topics...</div>}
+                            <div className="waiting">waiting partitions...</div>}
                     </div>
                 </Route>
                 <Route path={`${match.path}/:id`}>
