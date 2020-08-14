@@ -1,0 +1,64 @@
+@import (reference) "../../styles/variables.less";
+@import "../../styles/themes/themes";
+
+.buildThemes(@indexPrefix: 1) when (@indexPrefix =< length(@theme-prefix)) {
+  @prefix: extract(@theme-prefix, @indexPrefix);
+  .App.@{prefix} {
+    .themeDefs(@prefix);
+    // start include style
+
+    header {
+      background-color: @header-background-0;
+      background-image: @header-gradient;
+      animation: @animation-colorchangeHeader;
+
+      @keyframes colorchangeHeader {
+        0% {
+          background-color: @header-background-1;
+        }
+        25% {
+          background-color: @header-background-2;
+        }
+        50% {
+          background-color: @header-background-3;
+        }
+        100% {
+          background-color: @header-background-4;
+        }
+      }
+
+      .left {
+        color: @header-text-color;
+      }
+
+      .right {
+        color: @header-text-color;
+
+        .button .btn {
+          &:hover {
+            color: @header-text-color-active;
+          }
+        }
+      }
+
+      nav {
+        ul {
+          li {
+            a {
+              color: @header-nav-text-color-darken;
+              border-bottom: none;
+              &:hover, &.active {
+                color: @header-nav-text-color-active;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // finish include style
+  }
+  .buildThemes(@indexPrefix + 1);
+}
+
+.buildThemes();

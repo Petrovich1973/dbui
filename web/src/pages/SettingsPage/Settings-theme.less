@@ -1,0 +1,27 @@
+@import (reference) "../../styles/variables.less";
+@import "../../styles/themes/themes";
+
+.buildThemes(@indexPrefix: 1) when (@indexPrefix =< length(@theme-prefix)) {
+  @prefix: extract(@theme-prefix, @indexPrefix);
+  .App.@{prefix} {
+    .themeDefs(@prefix);
+    // start include style
+
+    .settingsPage {
+      .code {
+        color: @text-color-fade-50;
+
+        code {
+          &:hover {
+            color: @text-color-fade-80;
+          }
+        }
+      }
+    }
+
+    // finish include style
+  }
+  .buildThemes(@indexPrefix + 1);
+}
+
+.buildThemes();

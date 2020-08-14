@@ -70,6 +70,17 @@ const Broker = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.url, broker])
 
+    const [ tableHeader , setTableHeader ] = useState([])
+
+    useEffect(() => {
+        if (firstReqBroker && Object.keys(broker).length) {
+            const allReqLatency = [...production.requestLatency, ...consumption.requestLatency]
+                .map(({name}) => name.split(' ')[0])
+            setTableHeader(allReqLatency)
+        }
+        // eslint-disable-next-line
+    }, [broker])
+
     return (
         <div className="scrollhide" style={{fontSize: '100%', height: '100%', overflow: 'auto'}}>
             <nav className="tabs">
@@ -114,10 +125,10 @@ const Broker = (props) => {
                         <th rowSpan={2}>under replicated</th>
 
                         <th rowSpan={2}>bytes in per sec</th>
-                        <th colSpan={4} className="border-left border-right opacity">request latency</th>
+                        <th colSpan={4} className="border-left border-right opacity">request latency (ms)</th>
                         <th rowSpan={2}>failed request</th>
-                        <th rowSpan={2}>bytes in per sec</th>
-                        <th colSpan={4} className="border-left border-right opacity">request latency</th>
+                        <th rowSpan={2}>bytes out per sec</th>
+                        <th colSpan={4} className="border-left border-right opacity">request latency (ms)</th>
                         <th rowSpan={2}>failed request</th>
 
                         <th rowSpan={2}>cpu</th>
@@ -125,15 +136,7 @@ const Broker = (props) => {
                         <th rowSpan={2}>ram</th>
                     </tr>
                     <tr>
-                        <th>99.9th</th>
-                        <th>99th</th>
-                        <th>95th</th>
-                        <th>50th</th>
-
-                        <th>99.9th</th>
-                        <th>99th</th>
-                        <th>95th</th>
-                        <th>50th</th>
+                        {tableHeader.map((td, idxL) => <th key={idxL}>{td}</th>)}
                     </tr>
                     </thead>
                     <tbody>

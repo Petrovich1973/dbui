@@ -62,7 +62,7 @@ const Cluster = (props) => {
     return (
         <>
             {firstReqCluster && Object.keys(cluster).length ? <TitlePage tag={'h2'} label={<>
-                <NavLink to={`${match.url}`} className="white">
+                <NavLink to={`${match.url}`} className="text-color-active">
                     <small>
                         <small>
                             <small><em>Cluster</em></small>

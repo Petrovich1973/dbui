@@ -1,0 +1,93 @@
+.themeDefs(dark-theme) {
+  @text-color: #ebeff0;
+  @text-color-highlight: #3b89a9;
+  @text-color-active: #fff;
+  @text-color-hover: @text-color-active;
+  @text-color-invert: #161616;
+  @text-color-darken: darken(@text-color, 20%);
+  @text-color-fade-50: fade(@color, 50%);
+  @text-color-fade-80: fade(@color, 80%);
+
+  @background-color: #161616;
+  @background-color-invert: #fff;
+  @background-highlight: @background-color;
+  @background-active: @background-color;
+  @background-hover: @background-color;
+  @background-color-hover-invert: fade(@background-color-invert, 6%);
+  @background-gradient: linear-gradient(to top,
+                          fade(@black, 27%) 0%,
+                          fade(@black, 7%) 24%,
+                          transparent 75%,
+                          fade(@white, 7%) 94%,
+                          fade(@white, 21%) 100%),
+                          linear-gradient(15deg, transparent 0%, transparent 70%, fade(@white, 10%) 100%),
+                          radial-gradient(circle, fade(@violet, 20%) 0%, @gray 100%);
+
+  @border-color: #3b89a9;
+  @border-color-fade: fade(@border-color-active, 20%);
+  @border-color-active: #fff;
+  @border-color-invert: #161616;
+
+  @nav-text-color: @text-color-active;
+  @nav-text-color-darken: darken(@color, 30%);
+  @nav-text-color-hover: @text-color-active;
+  @nav-text-color-active: @nav-text-color-hover;
+  @nav-background-color: #161616;
+  @nav-background-color-active: #3b89a9;
+  @nav-background-color-hover: fade(@nav-background-color-active, 50%);
+
+  @btn-text-color: @text-color;
+  @btn-text-color-hover: @text-color-hover;
+  @btn-background-color: @background-color;
+  @btn-background-color-hover: linear-gradient(fade(@color, 10%) 0%, fade(@color, 10%) 100%);
+  @btn-background-color-hover-invert: linear-gradient(fade(@black, 10%) 0%, fade(@black, 10%) 100%);
+  @btn-border-color: @border-color-invert;
+
+  @btn-text-color-invert: @text-color-invert;
+  @btn-background-color-invert: @background-color-invert;
+  @btn-border-color-invert: @border-color-active;
+  @btn-border-color-invert-fade: fade(@btn-border-color-invert, 50%);
+
+  @progress-background-color: fade(@color, 20%);
+  @input-background-color-focus: fade(@yellow, 10%);
+  @breadcrumbs-text-color-hover: lighten(@text-color-highlight, 30%);
+
+  @link-text-color: lighten(@text-color-highlight, 20%);
+
+  @header-text-color: @text-color-fade-50;
+  @header-text-color-active: @text-color-fade-80;
+  @header-nav-text-color-darken: @nav-text-color-darken;
+  @header-nav-text-color-active: @text-color-active;
+  @header-background-0: darken(@green, 30%);
+  @header-background-1: fade(@orange, 8%);
+  @header-background-2: fade(@orange, 10%);
+  @header-background-3: fade(@purple, 10%);
+  @header-background-4: fade(@green, 20%);
+
+  @header-gradient: linear-gradient(
+                    90deg,
+                    darken(@gray, 6%) 0%,
+                    fade(@violet, 20%) 75%,
+                    @gray 100%);
+
+  @animation-colorchange: colorchange 300s infinite;
+  @animation-colorchangeHeader: colorchangeHeader 100s infinite;
+
+  @app-font-weight: 100;
+
+  //old variables
+  @color: #ebeff0;
+  @color-invert: #040404;
+  @white: #fff;
+  @black: #161616;
+
+  @gray: #394041;
+  @blue: #3b89a9;
+  @green: #46a546;
+  @red: #9d261d;
+  @yellow: #ffc40d;
+  @orange: #f89406;
+  @pink: #c3325f;
+  @purple: #7a43b6;
+  @violet: #602967;
+}

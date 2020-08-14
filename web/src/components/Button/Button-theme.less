@@ -1,0 +1,39 @@
+@import (reference) "../../styles/variables.less";
+@import "../../styles/themes/themes";
+
+.buildThemes(@indexPrefix: 1) when (@indexPrefix =< length(@theme-prefix)) {
+  @prefix: extract(@theme-prefix, @indexPrefix);
+  .App.@{prefix} {
+    .themeDefs(@prefix);
+    // start include style
+
+    .button {
+      .btn {
+        &.border {
+          border: 1px solid @btn-border-color-invert-fade;
+        }
+
+        &:hover {
+          background-image: @btn-background-color-hover-invert;
+        }
+
+        &.disabled {
+          color: fade(gray, 90%);;
+          background-color: fade(gray, 10%);
+          &:hover {
+            background-image: none;
+          }
+          &.border {
+            border: 1px solid fade(@btn-border-color-invert-fade, 30%);
+          }
+        }
+
+      }
+    }
+
+    // finish include style
+  }
+  .buildThemes(@indexPrefix + 1);
+}
+
+.buildThemes();

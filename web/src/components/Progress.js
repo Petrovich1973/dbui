@@ -6,8 +6,8 @@ const Progress = ({
                       value = 140,
                       height = '.7em',
                       fontSize = `.7em`,
-                      backgroundBar = `rgba(255, 255, 255, .2)`,
-                      backgroundColor = `rgba(255, 255, 255, .2)`,
+                      backgroundBar = `#b9b9b980`,
+                      backgroundColor = `#b9b9b980`,
                       color = `inherit`
                   }) => {
 
