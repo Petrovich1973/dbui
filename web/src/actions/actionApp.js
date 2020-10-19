@@ -529,3 +529,40 @@ export const loadBroker = id => {
             })
     }
 }
+
+///////////////////////////////////////////
+
+
+
+// Acls
+export const getAcls = (cluster) => {
+    return dispatch => {
+        const url = `http://localhost:9000/api/clusters/${cluster}/acls`
+        axios.get(url)
+            .then(response => {
+                dispatch({
+                    type: types.KAFKA_UPDATE,
+                    payload: {
+                        acls: response.data
+                    }
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export const postAcl = (cluster, data) => {
+    return dispatch => {
+        const url = `http://localhost:9000/api/clusters/${cluster}/acls`
+        axios.post(url, data)
+            .then(response => {
+                dispatch({
+                    type: types.KAFKA_UPDATE,
+                    payload: {
+                        aclCreateComplete: true
+                    }
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}

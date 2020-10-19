@@ -643,60 +643,64 @@
   },
   "acls": [
     {
-      "resource":{
-        "resourceType":"DelegationToken",
-        "name":"resource_foo"
-      },
-      "acls":[
-        {
-          "principal":"any",
-          "host":"baz",
-          "operation":"Read",
-          "permissionType":"Any"
-        },
-        {
-          "principal":"user",
-          "host":"bar",
-          "operation":"ClusterAction",
-          "permissionType":"Any"
-        },
-        {
-          "principal":"user",
-          "host":"bar",
-          "operation":"Any",
-          "permissionType":"Deny"
-        },
-        {
-          "principal":"user",
-          "host":"baz",
-          "operation":"AlterConfigs",
-          "permissionType":"Deny"
-        },
-        {
-          "principal":"user",
-          "host":"bar",
-          "operation":"IdempotentWrite",
-          "permissionType":"Unknown"
-        },
-        {
-          "principal":"admin",
-          "host":"baz",
-          "operation":"Delete",
-          "permissionType":"Deny"
-        },
-        {
-          "principal":"any",
-          "host":"bar",
-          "operation":"Unknown",
-          "permissionType":"Any"
-        },
-        {
-          "principal":"user",
-          "host":"bar",
-          "operation":"All",
-          "permissionType":"Any"
-        }
-      ]
+      "principal": "any",
+      "host": "baz",
+      "operation": "Read",
+      "permissionType": "Any"
+    },
+    {
+      "principal": "user",
+      "host": "bar",
+      "operation": "ClusterAction",
+      "permissionType": "Any"
+    },
+    {
+      "principal": "user",
+      "host": "bar",
+      "operation": "Any",
+      "permissionType": "Deny"
+    },
+    {
+      "principal": "user",
+      "host": "baz",
+      "operation": "AlterConfigs",
+      "permissionType": "Deny"
+    },
+    {
+      "principal": "user",
+      "host": "bar",
+      "operation": "IdempotentWrite",
+      "permissionType": "Unknown"
+    },
+    {
+      "principal": "admin",
+      "host": "baz",
+      "operation": "Delete",
+      "permissionType": "Deny"
+    },
+    {
+      "principal": "any",
+      "host": "bar",
+      "operation": "Unknown",
+      "permissionType": "Any"
+    },
+    {
+      "principal": "user",
+      "host": "bar",
+      "operation": "All",
+      "permissionType": "Any"
+    },
+    {
+      "principal": "777",
+      "host": "777",
+      "operation": "777",
+      "permissionType": "777"
+    },
+    {
+      "principal": "777",
+      "host": "777",
+      "operation": "777",
+      "permissionType": "777"
     }
   ]
 }

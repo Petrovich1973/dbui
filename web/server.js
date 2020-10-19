@@ -8,7 +8,7 @@ const app = jsonServer.create()
 const adapter = new FileAsync('./db.json')
 
 app.use(function (req, res, next) {
-    setTimeout(next, 1700);
+    setTimeout(next, 700);
 });
 
 app.use(bodyParser.json())
@@ -135,6 +135,15 @@ low(adapter)
 
         app.get('/api/clusters/:id/acls', (req, res) => {
             res.send(db.get('acls'))
+        })
+
+        app.post('/api/clusters/:id/acls', (req, res) => {
+            db.get('acls')
+                .push(req.body)
+                .last()
+                .write()
+                .then(acl => res.send(acl))
+
         })
 
     })

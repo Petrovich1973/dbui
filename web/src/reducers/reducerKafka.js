@@ -47,7 +47,10 @@ const initialState = {
     elementsWaiting: [],
 
     defaultTopic: null,
-    waitingDefaultTopic: null
+    waitingDefaultTopic: null,
+
+    acls: [],
+    aclCreateComplete: false
 }
 
 const reducer = (state = initialState, action) => {
