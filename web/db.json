@@ -667,28 +667,17 @@
       "permissionType": "Deny"
     },
     {
-      "principal": "user",
-      "host": "bar",
-      "operation": "IdempotentWrite",
-      "permissionType": "Unknown"
+      "principal": "gdfgfdg",
+      "host": "434",
+      "operation": "343",
+      "permissionType": "3434"
     },
     {
-      "principal": "admin",
-      "host": "baz",
-      "operation": "Delete",
-      "permissionType": "Deny"
-    },
-    {
-      "principal": "any",
-      "host": "bar",
-      "operation": "Unknown",
-      "permissionType": "Any"
-    },
-    {
-      "principal": "user",
-      "host": "bar",
-      "operation": "All",
-      "permissionType": "Any"
+      "principal": "98",
+      "host": "trytrytryrtyr",
+      "operation": "operation full",
+      "permissionType": "admin"
     }
-  ]
+  ],
+  "posts": []
 }

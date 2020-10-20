@@ -20,6 +20,7 @@ const AclsList = (p: any) => {
                 aclCreateComplete: false
             }
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -29,8 +30,6 @@ const AclsList = (p: any) => {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableHeadCell>Название ресурса</TableHeadCell>
-                        <TableHeadCell>Тип ресурса</TableHeadCell>
                         <TableHeadCell>Хост</TableHeadCell>
                         <TableHeadCell>Principal</TableHeadCell>
                         <TableHeadCell>Разрешения</TableHeadCell>
@@ -40,8 +39,6 @@ const AclsList = (p: any) => {
                 <TableBody>
                     {p.store.acls.map((a: any, i: number) => (
                         <TableRow key={i}>
-                            <TableCell>{a.name}</TableCell>
-                            <TableCell>{a.resourceType}</TableCell>
                             <TableCell>{a.host}</TableCell>
                             <TableCell>{a.principal}</TableCell>
                             <TableCell>{a.permissionType}</TableCell>
