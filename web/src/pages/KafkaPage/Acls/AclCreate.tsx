@@ -16,10 +16,10 @@ const AclCreate = (p: any) => {
 
     const send = () => {
         p.dispatch(postAcl(p.clusterId, {
-                principal: "777",
-                host: "777",
-                operation: "777",
-                permissionType: "777"
+                principal: "555",
+                host: "555",
+                operation: "555",
+                permissionType: "55"
             }))
     }
 
@@ -28,7 +28,7 @@ const AclCreate = (p: any) => {
             <h4>create ACLs</h4>
             <div>
                 <button onClick={send}>
-                    Create new ACL
+                    Send
                 </button>
             </div>
         </div>

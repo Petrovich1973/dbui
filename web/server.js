@@ -142,7 +142,7 @@ low(adapter)
                 .push(req.body)
                 .last()
                 .write()
-                .then(acl => res.send(acl))
+                .then(acl => res.status(200).send('Ok'))
 
         })
 

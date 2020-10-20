@@ -38,7 +38,7 @@ const AclsList = (p: any) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {p.store.acls.map((a: any, i) => (
+                    {p.store.acls.map((a: any, i: number) => (
                         <TableRow key={i}>
                             <TableCell>{a.name}</TableCell>
                             <TableCell>{a.resourceType}</TableCell>

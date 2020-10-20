@@ -689,18 +689,6 @@
       "host": "bar",
       "operation": "All",
       "permissionType": "Any"
-    },
-    {
-      "principal": "777",
-      "host": "777",
-      "operation": "777",
-      "permissionType": "777"
-    },
-    {
-      "principal": "777",
-      "host": "777",
-      "operation": "777",
-      "permissionType": "777"
     }
   ]
 }
